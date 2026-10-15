@@ -1,6 +1,12 @@
 # Testing
 
-## Current acceptance — 15 October 2026
+## Git integration acceptance — 15 October 2026
+
+[PR #1 CI run 38666753214](https://github.com/YoussefMohamed108/pc-exchange-egypt/actions/runs/38666753214) passes 85 unit/database tests, 49 browser checks (one intentional skip), 7 Python tests and all static/build/repository checks. The three added environment tests preserve an explicit production origin, select Vercel's generated preview origin when unset, and retain localhost for local development.
+
+The automatic protected preview was checked using short-lived, origin-scoped Vercel authentication. Its health response confirms no database is configured; sitemap links use its own hostname; English empty inventory, benchmark search and Arabic mobile layout pass without browser errors. The PR remains blocked by the required independent review after its checks pass. Rebuilding the existing production source also passed both Vercel GitHub checks and automatic alias assignment, verifying compatibility with tunnel recovery. No new source was merged or published to production.
+
+## Seller deletion acceptance — 15 October 2026
 
 All 82 unit/database/model/data tests and all 49 applicable desktop/mobile browser checks pass (one intentional desktop skip). Owner permanent-deletion coverage checks confirmed ownership, direct private-function denial, exact PCX confirmation, stale timestamps, related record removal, shared-file preservation, owner-only cleanup and the audit trail. TypeScript, ESLint, formatting and the production build pass. Historical counts below describe earlier milestones.
 

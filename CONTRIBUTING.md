@@ -1,6 +1,6 @@
 # Working on PC Exchange Egypt
 
-The private repository is the shared source of truth. Read [AGENTS.md](AGENTS.md), [current progress](PROJECT_PROGRESS.md) and [marketplace architecture](docs/marketplace-architecture.md) before changing workflows.
+The public repository is the shared source of truth. Read [AGENTS.md](AGENTS.md), [current progress](PROJECT_PROGRESS.md) and [marketplace architecture](docs/marketplace-architecture.md) before changing workflows. Public source visibility does not grant production access or an open-source license.
 
 ## Local setup
 
@@ -14,7 +14,7 @@ The existing owner's PC backend is a deployed environment, not a shared developm
 2. Keep changes focused. Preserve English/Arabic layouts, honest empty states and existing ownership boundaries.
 3. Run `npm run lint`, `npm run typecheck`, `npm run format:check`, `npm test` and `npm run build`.
 4. Run browser checks for UI changes: `npx playwright install chromium`, then `npm run test:e2e`. On Windows you may set `PLAYWRIGHT_CHANNEL=msedge` to use installed Edge.
-5. Open a pull request describing the behavior, validation and any deployment/migration step. Wait for review and passing checks before merging.
+5. Open a pull request describing the behavior, validation and any deployment/migration step. Use its Vercel preview to review the UI. Before merging, both `web` and `analysis` must pass, the branch must be up to date, conversations must be resolved, and another authorized reviewer must approve the latest changes. New changes dismiss earlier approvals. These rules include administrators.
 
 The CI workflow runs static checks, database/unit tests, frontend browser tests and Python API tests. It does not connect to the owner's backend or send verification mail. Full marketplace acceptance is a separate operator-run check using disposable users; see [TESTING.md](TESTING.md).
 
@@ -26,6 +26,10 @@ Permanent deletion requires confirmed ownership or administrator authorization, 
 
 ## Deployment
 
-Repository access does not grant production access. The owner coordinates database migrations and Vercel releases. The project currently deploys through `npm run deploy:vercel`; GitHub pushes are not automatically connected to Vercel. Do not register startup tasks or expose a tunnel from a collaborator's machine merely to run frontend tests.
+The existing Vercel project is connected to this repository. Pull requests get preview deployments; merging an approved PR into `main` triggers production. Vercel holds the production domain assignment until the new commit's `web` and `analysis` checks pass. See [the GitHub/Vercel workflow](docs/github-vercel-workflow.md).
+
+Previews have no live Supabase connection: they support storefront/design/benchmark review with honest empty states. Login, seller operations and real inventory need a separately configured development backend. Production connection settings remain production-only. External fork previews require Vercel authorization.
+
+The owner coordinates database migrations before merging code that depends on them. Startup recovery still rebuilds the already deployed source when the PC tunnel address changes. The manual `npm run deploy:vercel` command is reserved for coordinated operator recovery, not ordinary source releases. Do not register startup tasks or expose a tunnel from a collaborator's machine merely to run frontend tests.
 
 Do not add sample listings, benchmark estimates or inspection claims to deployed data. Preserve source attribution for benchmark measurements. The repository has no public open-source license.
