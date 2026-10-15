@@ -8,13 +8,14 @@ Browser → Vercel Next.js/server actions → Cloudflare HTTPS tunnel → loopba
 
 Windows automatic startup is installed. Sign in after turning on the PC; the hidden task starts Docker and the installed backend, restores the tunnel, and updates Vercel from its existing production source when the API address changes. See [automatic startup](docs/automatic-startup.md) for status, pause/resume and disable commands. Allow several minutes for the connection rebuild.
 
-For explicit backend code/migration updates and frontend source deployment, run:
+For explicit backend code/migration updates and tunnel sharing, run:
 
 ```powershell
 npm run backend:up
 npm run backend:share
-npm run deploy:vercel
 ```
+
+Frontend source releases use reviewed pull requests into `main`. The owner applies required backward-compatible migrations before merging. `npm run deploy:vercel` remains an operator recovery command; ordinary changes use the protected Git workflow below.
 
 The Cloudflare quick tunnel is temporary. When it restarts, its address changes; the startup supervisor rebuilds the existing Vercel deployment automatically. Your PC must stay awake with Docker, the tunnel and its Internet connection running. For a stable URL, replace the quick tunnel with a named Cloudflare tunnel on an owned domain, update the backend URL and rebuild Vercel. Quick tunnels are for development/testing, as described in [Cloudflare's documentation](https://developers.cloudflare.com/tunnel/get-started/quick-tunnels/).
 
@@ -30,9 +31,9 @@ Create/select the authorized project. Review migrations and apply them once, in 
 
 ## Vercel configuration
 
-Import the repository as a Next.js project, root directory `.`. Build command `npm run build`, Node 24. Set the three frontend variables from `.env.example` in the appropriate preview/production environments. `NEXT_PUBLIC_SITE_URL` must be the canonical deployment origin.
+The existing `pc-exchange-egypt` Vercel project is connected to `YoussefMohamed108/pc-exchange-egypt`; do not import a duplicate project. Root directory `.`, build command `npm run build`, Node 24, production branch `main`. Production keeps its existing frontend variables; `NEXT_PUBLIC_SITE_URL` is its canonical deployment origin.
 
-Use separate test data/roles for previews. No service-role key is needed by the application. Never set a privileged key as a `NEXT_PUBLIC_` value. Public values are compiled at build time; rebuild after changing them.
+Previews receive only their preview/email-delivery labels and no live Supabase connection. Without an explicit site origin, the app uses Vercel's generated deployment hostname. To exercise accounts and listings in previews, configure a separate development backend, test data and exact authorized Auth redirects. No service-role key is needed by the application. Never set a privileged key as a `NEXT_PUBLIC_` value. Public values are compiled at build time; rebuild after changing them.
 
 Check `/api/v1/health`, both locale homepages, catalog, Auth callbacks and staff permissions. A successful health endpoint only confirms application health/configuration, not complete database connectivity. Verify real inventory and customer/staff journeys before accepting traffic.
 
@@ -55,6 +56,8 @@ The contract currently rejects price estimates with `insufficient_market_data`. 
 
 ## CI and release process
 
-The included GitHub workflow runs lint, types, formatting, domain/SQL tests, build, dependency audit, browser checks and Python boundary tests. Workflow files were created locally; no GitHub repository or remote workflow run was created.
+The GitHub workflow runs lint, types, formatting, domain/SQL tests, build, dependency audit, browser checks and Python boundary tests. It runs for pull requests and commits on `main`, avoiding duplicate feature-branch runs.
+
+The public repository's protected `main` requires the GitHub Actions `web` and `analysis` checks, an up-to-date branch, one independent approval of the latest changes and resolved conversations. Administrators must follow the same rules; force pushes and branch deletion are disabled. Vercel creates PR previews and automatically builds `main`. Its two production deployment checks wait for both CI jobs before changing the live domain assignment. See [workflow settings and recovery](docs/github-vercel-workflow.md).
 
 Keep migration backups and a reviewed restore plan. Inventory/order procedures must be verified before rollout. Prefer backward-compatible migrations; do not deploy code referencing schema changes before they are applied. Configure error monitoring and operational alerting before real sales.

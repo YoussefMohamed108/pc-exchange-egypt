@@ -25,7 +25,7 @@ Startup state and rotating logs are in `.artifacts/backend/autostart-status.json
 
 The desktop app's Vercel login profile was not visible to Task Scheduler. The authorized login is reused in `.artifacts/backend/vercel`, with Windows ACL access restricted to the owner and SYSTEM. This ignored folder never goes to Git or Vercel. Both manual project deployments and the supervisor use that CLI store so refreshed credentials stay consistent. No credentials appear in the task's arguments; only allowlisted public Supabase configuration is sent to Vercel. If the Vercel session is revoked, renew it using `npx vercel@64.0.2 login --global-config ".artifacts/backend/vercel"`.
 
-Installing new backend code and migrations remains explicit with `npm run backend:up`. Deploying edited frontend source remains explicit with `npm run deploy:vercel`. Startup recovery only starts installed images and redeploys existing production source.
+Installing new backend code and migrations remains explicit with `npm run backend:up`. New frontend source is deployed through reviewed pull requests into protected `main`; Vercel waits for its GitHub checks. Startup recovery only starts installed images and redeploys existing production source. `npm run deploy:vercel` remains an operator recovery command. See [the GitHub/Vercel workflow](github-vercel-workflow.md).
 
 ## Acceptance
 

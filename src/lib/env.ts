@@ -32,5 +32,11 @@ export function getSupabaseConfig() {
   return result.data;
 }
 export function siteUrl() {
-  return z.url().parse(process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000");
+  const deploymentUrl = process.env.VERCEL_URL;
+  return z
+    .url()
+    .parse(
+      process.env.NEXT_PUBLIC_SITE_URL ||
+        (deploymentUrl ? `https://${deploymentUrl}` : "http://localhost:3000"),
+    );
 }
