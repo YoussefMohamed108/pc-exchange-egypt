@@ -6,7 +6,11 @@ All 82 unit/database/model/data tests and all 49 applicable desktop/mobile brows
 
 `node scripts/check-marketplace.mjs --laptop --seller --operations --owner-delete` passes against a local production frontend and the real PC-hosted Supabase stack. It verifies seller controls, private contact/PDF access, benchmark refusal and approval, physical inspections, admin moderation, Arabic mobile layouts, rejected incorrect confirmation and permanent owner deletion of records and actual Storage files. Disposable fixtures are cleaned up; existing user listings are not changed.
 
+The same full acceptance also passes against Vercel deployment `dpl_FSaouek7S1WWaQ82csxeeGEvYNs8` through the production Vercel hostname and real PC backend. Actual photo/PDF removal and fixture cleanup are verified. This is PC-hosted Supabase acceptance, not hosted Supabase or a new SMTP-delivery test.
+
 Set `MARKETPLACE_BASE_URL` to the frontend origin to choose local or deployed acceptance. `--owner-delete` selects seller permanent deletion; omitting it retains the admin permanent-delete scenario. `npm run check:repository` checks the exact tracked/stageable file set for private/generated paths and recognizable credentials before publication. This is an additional guard, not a guarantee that arbitrary secrets can always be detected.
+
+[GitHub CI run 38664129436](https://github.com/YoussefMohamed108/pc-exchange-egypt/actions/runs/38664129436) independently passes the same 82 unit/database and 49 browser checks (one intentional skip) on Linux, all 7 Python tests, static/build checks, repository checks and an npm audit with zero vulnerabilities. CI uses the unconfigured storefront and isolated database fixtures, not the PC backend.
 
 ## Marketplace and external SMTP acceptance — 14 October 2026
 

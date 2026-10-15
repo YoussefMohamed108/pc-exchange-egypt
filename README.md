@@ -4,7 +4,7 @@ A bilingual used PC hardware storefront and operations application for Egypt. Th
 
 **Status: development preview deployed to [Vercel](https://pc-exchange-egypt.vercel.app/en), backed by self-hosted Supabase and FastAPI on the owner's PC.** The interactive 3D PC storefront supports English and Arabic. Full business launch acceptance remains open. The app never creates fictional commercial inventory, pricing, sales or inspection results.
 
-New collaborators should start with [CONTRIBUTING.md](CONTRIBUTING.md). Use an isolated development backend and your own ignored environment files. The owner's Windows startup task starts the deployed Docker backend/tunnel at sign-in; see [automatic startup](docs/automatic-startup.md). Manual operator controls and deployment instructions are in [SETUP_GUIDE.md](SETUP_GUIDE.md) and [DEPLOYMENT_GUIDE.md](DEPLOYMENT_GUIDE.md).
+The private repository is [YoussefMohamed108/pc-exchange-egypt](https://github.com/YoussefMohamed108/pc-exchange-egypt). New collaborators should start with [CONTRIBUTING.md](CONTRIBUTING.md). Use an isolated development backend and your own ignored environment files. The owner's Windows startup task starts the deployed Docker backend/tunnel at sign-in; see [automatic startup](docs/automatic-startup.md). Manual operator controls and deployment instructions are in [SETUP_GUIDE.md](SETUP_GUIDE.md) and [DEPLOYMENT_GUIDE.md](DEPLOYMENT_GUIDE.md).
 
 ## Start locally
 
@@ -63,7 +63,7 @@ $env:PLAYWRIGHT_CHANNEL='msedge'
 npm run test:e2e
 ```
 
-The browser suite supports the configured empty storefront and its unconfigured state. Local Auth/REST/Storage acceptance is available with `node scripts/check-backend.mjs`; it creates and cleans up disposable test fixtures. Complete business journeys still require acceptance. See [TESTING.md](TESTING.md) for evidence and boundaries.
+The browser suite supports real inventory, the configured empty storefront and its unconfigured state. Local Auth/REST/Storage acceptance is available with `node scripts/check-backend.mjs`; it creates and cleans up disposable test fixtures. Complete business journeys still require acceptance. See [TESTING.md](TESTING.md) for evidence and boundaries.
 
 ## Analysis service
 
