@@ -1,0 +1,11 @@
+node_modules
+.next
+package-lock.json
+playwright-report
+test-results
+coverage
+.venv
+.artifacts
+services/api/**/__pycache__
+infrastructure/backend/volumes
+infrastructure/backend/SUPABASE-LICENSE

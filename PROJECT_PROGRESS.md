@@ -1,0 +1,218 @@
+# PC Exchange Egypt — Progress
+
+Updated: 15 October 2026.
+
+## Current deployment
+
+- Frontend: https://pc-exchange-egypt.vercel.app/en and `/ar`, deployed successfully to the owner's Vercel project with Node 24 / Next 16.4. This is a labeled development preview.
+- Backend: self-hosted Supabase PostgreSQL 17, Auth, PostgREST, Storage and the optional FastAPI service are running in Docker on this PC. Named volumes preserve database and photo data; private credentials are generated locally and ignored by Git.
+- A temporary Cloudflare HTTPS tunnel exposes the application gateway and the authenticated PDF submission route. PostgreSQL, Auth administration, mailbox and other analysis routes remain private. No privileged key was deployed to Vercel.
+- The PC must remain awake and connected. Windows sign-in startup now starts Docker/the installed backend, restores the tunnel and rebuilds the existing Vercel production source when the API address changes. See `docs/automatic-startup.md` for controls and tested limits.
+- Brevo external SMTP is configured with a verified sender, private SMTP key and authorized PC IP. Actual confirmation delivery was recorded at 22:10 Africa/Cairo on 14 October; the owner's account subsequently became confirmed and was assigned admin with explicit approval and an audit record. Full commercial launch acceptance remains open.
+
+### Owner permanent deletion, refactoring and collaboration — 15 October 2026
+
+- Sellers can permanently remove their own listings, including paused and recoverably deleted items, by typing the exact PCX reference and confirming that deletion cannot be restored. Server actions and SQL enforce confirmed ownership and stale-change checks. Shared owner/admin deletion logic removes dependent requests/reports, preserves shared files and audit history, and queues file cleanup with permissions limited to the deleting owner or an admin. A retry control handles incomplete storage cleanup.
+- Applied `20261015220000_owner_permanent_deletion.sql` to the real PC-hosted backend. All 82 unit/database tests pass, including unauthorized deletion, stale/incorrect confirmations, dependent record removal, shared-file protection and owner-scoped cleanup. TypeScript, ESLint, formatting and the production build pass. The full local `--laptop --seller --operations --owner-delete` browser/backend acceptance passes and removes its disposable accounts/listings/files. Existing user inventory is preserved.
+- Split the large marketplace form module into contact, listing and benchmark components; shared action feedback, deletion validation, status labels and cleanup replace duplicate implementations. Request-scoped Supabase/profile/listing memoization avoids repeated work without sharing authenticated state across requests. Independent page queries run concurrently.
+- Pre-indexed the finite benchmark data and reused sorted rankings. A local 2,500-iteration filtering workload improved from 1,925 ms to 51 ms, excluding module initialization; this is not a whole-page speed claim. Existing source/data accuracy tests remain passing. Removed the superseded foundation implementation plan; retained design specifications and applied migration history.
+- Added contributor setup/review/deployment guidance, a pull-request template and repository credential checks. Safe `.env.example` files are included; credentials, Docker data, private test artifacts and generated output remain ignored. CI uses Node 24, constrained browser workers and the production build. GitHub publication and deployed acceptance are recorded below once completed.
+- All 49 applicable desktop/mobile browser regressions pass, with one intentional desktop skip. Updated the homepage assertion to accept either real inventory or the honest empty state while still rejecting unavailable/error states; the existing published listing is preserved. The earlier mobile mesh timeout passes in the complete final run.
+
+### Seller sold, pause/resume and deletion controls — 15 October 2026
+
+- Added visible owner controls to My listings and each listing workspace: Mark as sold, Pause/Resume, Relist, confirmed Delete and Restore as draft. Deleted listings have a separate view. Seller deletion is recoverable; permanent removal remains an admin function. English and Arabic labels explain buyer visibility and admin restrictions.
+- Applied `20261015210000_seller_listing_controls.sql` to the PC-hosted backend. Seller pauses use their own publication state, independent of admin hiding. Confirmed-owner SQL checks, row locks, stale timestamps, deletion confirmation and audit records protect each operation. Restore never clears an admin restriction or publishes automatically. Unavailable listings block catalog/contact/PDF access and cancel active physical-inspection requests; reference, revision and review history remain intact.
+- All 79 local unit/database tests pass, along with TypeScript, ESLint, repository formatting and the production build. New database tests cover owner-only access, stale changes, transitions, photo/contact prerequisites, admin restrictions, review preservation and draft restoration. Real local browser/backend checks verified the full seller lifecycle, buyer access restrictions and product-ID lookup. The mobile check caught duplicate React keys shared by the controls/editor; distinct keys fix the duplicate controls. The final focused disposable acceptance passes desktop and Arabic mobile, and all test accounts/listings/files were removed.
+- Deployed as `dpl_9H9ykeh8mESQUSGgMMKGAzY3Mbre`; Vercel build/typecheck and dependency audit passed. The complete deployed `--laptop --seller --delete-only` acceptance passed: seller status controls, confirmed delete/draft restore, admin restrictions, catalog/contact/PDF removal, stable references/review validity, Arabic mobile, benchmark refusal/approval, hardware-change invalidation and admin permanent deletion with actual PDF/photo cleanup. Every disposable account/listing/file was removed; existing user listings were unchanged. Live disposable proof: `.artifacts/previews/seller-paused-test.png` and `.artifacts/previews/seller-controls-ar-test.png`. Checks use the real PC-hosted Supabase stack, not hosted Supabase; domain settings were not changed.
+
+### Review decisions, permanent deletion and draft Resume — 15 October 2026
+
+- Benchmark review now offers PDF opening/inline preview, an explicit approve/refuse choice and Submit review. Refusal comments are mandatory and visible in the seller's benchmark history; approval comments are optional. Current evidence can be reviewed while paused/draft without publishing it. Specific explanations replace the generic eligibility message, including the existing prohibition on reviewing one's own listing.
+- Diagnosed the owner's missing Resume control: the listing is both hidden and a draft. Added a prominent Resume button; Resume & publish validates contact setup/photos and republishes a draft. Sold/archived seller states remain unchanged. No existing user listing was resumed or otherwise changed during diagnosis.
+- Added typed-reference, reason and checkbox confirmation for permanent deletion, guarded in server actions and SQL. Related applications/reports/private identifiers are removed; audit records remain. Company products with order history are protected. Unshared files are deleted through Storage, with a private retryable cleanup ledger and an All products retry control.
+- Applied `20261015200000_review_decisions_and_product_deletion.sql` and the concurrent-review/deletion guard in `20261015201000_review_delete_race.sql` to the PC-hosted backend. All 75 local unit/database tests pass. TypeScript, ESLint, repository formatting and the production build pass. Tests cover refusal reasons, paused review, draft Resume, stale/unauthorized deletion, private dependency removal, shared-file protection, storage authorization and order preservation. PDF response headers permit same-origin previews while other pages retain frame denial.
+- Real local browser/backend checks pass for PDF preview, required refusal comments, seller feedback, resubmission/approval while paused, physical inspections, watermark controls, explicit draft Resume, product editing and Arabic mobile layouts. A focused final run verifies typed-ID rejection/correction, permanent removal and actual Supabase photo/PDF deletion. Fixed a form reset after incorrect confirmation so entered values persist. All disposable records/files were removed.
+- Deployed as `dpl_7wpEgGU9ycoLyBHs2KeUUi79CvN1`. Vercel's production build, typecheck and dependency audit passed. The owner's live admin session confirms PDF rendering, the explicit self-review explanation, Resume & publish on the existing paused draft, and the typed-confirmation permanent-delete form. Existing user records were not modified. Resume proof: `.artifacts/previews/admin-resume-live.png`.
+- The complete deployed `--laptop --operations` acceptance passed through Vercel with the PC-hosted backend: PDF refusal and seller feedback, resubmission/approval while paused, physical inspection/report, watermark removal, draft Resume, admin edits, both queues, Arabic mobile layouts, typed permanent-delete confirmation and actual PDF/photo removal. All disposable accounts/products/reports/files and their cleanup entries were removed. The working Vercel hostname was used; custom-domain configuration was unchanged.
+
+### Separate physical-inspection and benchmark-review queues — 15 October 2026
+
+- Replaced the duplicate Free inspection requests / Inspections navigation with one **Inspections** application queue. It shows applicants, private visit contacts and availability, scheduling decisions and the physical-report form. **Benchmark reviews** independently shows PDF applicants, submission snapshots and review decisions. General product moderation stays in the product workspace.
+- Both queues search permanent `PCX-…` references or UUIDs, filter application status and paginate 20 results. Product management links to each queue with its product ID filled in. Company-stock report creation moved inside the individual company product workspace; it no longer occupies a second global inspection screen.
+- Applied `20261015190000_separate_review_queues.sql` to the PC-hosted database. The confirmed-admin RPC checks privileges, separates application sources and returns applicant details only to admins. All 70 local unit/database tests pass, including separation, product-ID search, status filters, pagination and authorization. TypeScript, ESLint, repository formatting and the production build pass.
+- The complete disposable marketplace/operations browser acceptance passed against a fresh local production build and the actual PC backend. It checks independent applicants, one Inspections navigation entry, PCX/UUID lookup, product-page links, PDF review, physical scheduling/report submission, watermark controls, product lifecycle and Arabic mobile queues. An initial run exposed old navigation served by the existing development process; the fresh production build passes the unchanged assertion. All fixture accounts, products, reports and files were removed.
+- Deployed as `dpl_GjddCCYBK9BUuiMRqyaYpukrcsEQ`; Vercel's build, typecheck and dependency audit passed. The owner's existing admin session visibly confirms one Inspections link, the independent benchmark queue and a product-ID search returning the matching application. Live screenshots: `.artifacts/previews/review-queues-live.png` and `.artifacts/previews/benchmark-review-queue-live.png`.
+- The complete marketplace/operations acceptance also passed through the deployed Vercel frontend with the real PC backend, including separate queues, applicant details, PCX/UUID filtering, Arabic mobile layouts, both review paths, watermark revocation and pause/delete/restore. All disposable accounts, listings, reports, PDFs and images were removed; existing user records were preserved. Domain configuration was not changed; live acceptance used `pc-exchange-egypt.vercel.app`.
+
+### Free inspections and product operations — 15 October 2026
+
+- Added permanent `PCX-…` references to seller listings and company stock. Admins can search by reference, UUID, title/model or SKU, filter across all states and paginate 25 products at a time. The product workspace supports editing, pause/resume, recoverable delete/restore, watermark revocation and recorded reasons/history. Deleted records cannot be silently republished; restoration creates a paused draft. Company pauses block new checkout without destroying existing orders or stock reservations.
+- Added free seller inspection requests (SQL-enforced EGP 0), private availability notes, admin scheduling/decline/cancel, seller cancellation, and category-specific physical report forms with identity, photos and recorded checks. A current, unexpired passing report awards PCX Inspected. No untested check can qualify, and admins cannot inspect their own seller listing. Full device identifiers remain private; public reports retain results, expiry, revision and revocation status. Existing company-stock inspection tools remain separate.
+- Applied `20261015180000_product_operations.sql` and `20261015181000_admin_report_access.sql` to PC-hosted Supabase. Local unit/database tests: 68 pass, including privilege boundaries, stale changes, stable references, badge requirements/revocation, private evidence, company checkout/reservations and admin historical report access. TypeScript, ESLint, formatting and production build pass. The storefront/3D run passed 30 checks and skipped one mobile-only case on desktop; three navigation assertions timed out with six workers and all three passed unchanged when rerun with one worker.
+- Real PC-backend/browser acceptance passed with `node scripts/check-marketplace.mjs --laptop --operations`: email-confirmed disposable seller/buyer/admin, photos/PDF, private contacts, benchmark approval, free request, admin search/scheduling, required checks/photos, physical report, private serial, watermark revocation, pause/resume, delete/restore, admin edits and Arabic mobile layout. All disposable accounts/listings/reports/photos/PDFs were removed. This is acceptance of software behavior, not a real inspection or commercial verification claim.
+- The complete workflow also passed through the deployed Vercel frontend (`dpl_6Bi8w5ZPDwus3UncnViPxmiSsaMX`) with the real PC backend; every disposable record and uploaded file was removed. Final deployment `dpl_4VfFEiyFRktEACAJmdwAdf4FhWas` adds only heading/search alignment refinements and passed Vercel's build/typecheck/audit. The owner's existing admin session opened the final All products register successfully; live proof is `.artifacts/previews/product-management-live.png`. Domain configuration was not changed; acceptance used the working Vercel hostname.
+
+### Laptop category — 15 October 2026
+
+- Added Laptops / لابتوبات to the homepage category cards, catalog filtering, seller form, company inventory selector and category icons. The four homepage cards adapt to two columns on tablets and one on mobile. Public laptop listings start empty; no commercial inventory or performance claims were invented.
+- Added ten required seller disclosures: CPU, graphics, RAM, storage, display, battery condition, charger, keyboard layout, boot status and included accessories. Guidance accepts explicit untested condition details. Specification labels are localized for buyers and administrators; listing specifications are marked seller-reported.
+- Applied `20261015120000_laptops.sql` to the PC-hosted Supabase stack after all 58 local unit/database/data tests, TypeScript and ESLint passed. SQL rejects missing, blank and incorrectly typed laptop details. Existing review revision rules also invalidate the badge on a battery-detail edit.
+- Local acceptance: production build, repository formatting and all 33 applicable storefront/3D desktop/mobile browser checks pass (one intentional desktop skip). The real Docker seller/buyer/admin workflow passed with a disposable laptop: category switching, saved disclosures, Arabic mobile editing, catalog projection, private contacts, processed PDF access, manual approval and badge invalidation after a battery-detail edit. Fixtures were removed. Homepage cards were visually inspected.
+- Deployed as `dpl_oLwRpwxmcE66QFwc28b3qTH3sBFm`; Vercel's production build and dependency audit passed. All four targeted live laptop/Complete PC navigation checks passed across desktop/mobile and English/Arabic. The complete laptop seller/buyer/admin acceptance also passed through Vercel with the real PC-hosted backend, and every disposable account/listing/photo/PDF was removed. Live homepage proof: `.artifacts/previews/laptops-live.png`. Domain registration remains separate; acceptance used the working Vercel hostname.
+
+### Eight additional AAA games — 15 October 2026
+
+- Added Alan Wake 2, Red Dead Redemption 2, Resident Evil Requiem, Marvel's Spider-Man 2, Forza Horizon 6, Hogwarts Legacy, Starfield and The Last of Us Part I. Total: 466 measured system/game/resolution entries across 16 game/build entries, with the existing 40 GPU and 50 CPU models preserved. The additions include 105 GPU and 45 CPU measurements; the three extra CPU games retain their own RTX 4090 review and presets.
+- All 150 new measurement pairs were visually checked against original TechSpot charts. Explicit source dates, chart links, hardware, settings and limitations are documented in `docs/benchmark-sources.md`. GPU coverage for seven new games publishes 1440p/4K only; 1080p remains null. RDR2 covers all three resolutions. No game averages, FPS estimates, missing platform details or current-patch claims were invented.
+- The owner supplied GoDaddy support's confirmation that registry registration is pending and deferred domain work. No domain/DNS/authentication configuration changed; see `docs/custom-domain.md`.
+- Local validation: all 57 unit/database/data tests and 16 benchmark desktop/mobile browser checks pass, including all eight new games, English/Arabic, source links, CPU/GPU separation and unpublished resolutions. TypeScript, ESLint, changed-file formatting and production build pass. The build used unsandboxed execution for the known Windows SWC workspace-resolution restriction.
+- Deployed as `dpl_GdcAgk5sQgCKjPouBWSeabJhdxqw`; Vercel's production build and dependency audit passed. All 16 benchmark browser checks also pass on `pc-exchange-egypt.vercel.app`. Resident Evil Requiem's six-model 1440p ranking was visually verified live; proof: `.artifacts/previews/aaa-benchmarks-live.png`. This is frontend benchmark acceptance; domain registration and backend acceptance are separate.
+
+### Benchmark filter correction and custom domain — 14 October 2026
+
+- Fixed model discovery retaining a stale game/review in state after fallback. Returning from one model to All models now retains the visible review and expands its ranking. If the selected game has no matching hardware, discovery opens the review with the largest matching cohort. Rankings still use one source and preset.
+- Added explicit generation-scoped All models wording, review option counts, a visible filtered/total count, active filter context, and Clear hardware filters in English and Arabic. A generation containing only one measured model is distinguished from the full review's hardware coverage.
+- Local validation: all 56 unit/database/data tests and 12 benchmark desktop/mobile browser checks pass, including the new seven-model RTX 20 reset regression, the one-to-28 CPU filter reset, Arabic reset and viewport checks. TypeScript, ESLint and production build pass. The build required unsandboxed execution because SWC cannot canonicalize this Windows workspace under the filesystem sandbox.
+- Domain investigation: Vercel already has both `pc-ex.store` and `www.pc-ex.store` attached/ownership verified, with apex-to-www redirect, but DNS is misconfigured. GoDaddy confirms the purchase in a paid registration receipt, yet products/portfolio/DNS and direct domain navigation expose no domain to manage. Requested the owner's help obtaining provisioning from GoDaddy; no DNS or backend auth origin changed. Current recommendations and remaining acceptance are in `docs/custom-domain.md`.
+- Deployed as `dpl_9Po2XWcoNhfmK1gJoHRrfMAW4PNX`. Vercel build and dependency audit passed. All 12 benchmark desktop/mobile browser checks pass against `pc-exchange-egypt.vercel.app`, including English/Arabic, review preservation, filter reset and missing resolutions. Live RTX 20 All models was visually verified with seven results; proof: `.artifacts/previews/benchmark-filter-fix-live.png`. This confirms frontend acceptance, not custom-domain or new backend acceptance.
+
+### Gaming hardware expansion — 14 October 2026
+
+- Expanded to 316 checked system/game/resolution measurements, 40 GPUs and 50 CPUs across eight game/build entries. Added selected RTX 20/30/40/50-series, AMD AM4/AM5, Intel 9th–14th-generation and Core Ultra models from seven additional primary TechSpot reviews. Each retains its own date, preset, platform and chart; historical Cyberpunk v1.03 is separate from Phantom Liberty. Coverage is curated, not every SKU.
+- Added generation/socket filtering and a library-wide model selector that narrows available games/reviews. CPU-only reviews cannot produce GPU rankings. Explicit nulls represent unpublished resolutions; the UI provides a missing-resolution explanation, switches to published resolutions and marks unavailable comparison cells. Hero counts derive from measured data.
+- Local validation: 56 unit/database/data-integrity tests, all 10 benchmark desktop/mobile browser checks, ESLint, TypeScript and production build pass. English desktop and Arabic mobile layouts inspected, including unavailable resolutions. No database or backend changes.
+- Deployed as `dpl_8SdftUoHSf4tTvtoEe2uH6ALmvSU`; the Vercel production build and dependency audit passed. All 10 benchmark browser checks passed against `pc-exchange-egypt.vercel.app`, including desktop/mobile, English/Arabic, model discovery, older generations and unavailable resolutions. Live RTX 20-series filtering was visually checked; screenshot: `.artifacts/previews/gaming-expanded-live.png`.
+- Vercel reported an existing custom production alias `www.pc-ex.store`, but that hostname returned `ERR_NAME_NOT_RESOLVED` in this PC's browser during acceptance. The original Vercel alias serves the new build correctly. No domain/DNS settings were changed in this milestone.
+
+### Gaming FPS benchmarks — 14 October 2026
+
+- Added a dedicated Gaming FPS view at `/en/benchmarks?view=gaming` and the Arabic equivalent. The static snapshot contains 135 unique system/game/resolution measurements, average FPS and 1% lows, for 13 GPUs, two CPUs, six games and 1080p/1440p/4K. Values were checked visually against original TechSpot charts; the original articles, dates, presets, paired hardware and missing-method limitations are linked in the UI and documented in `docs/benchmark-sources.md`.
+- Game, test series, category, resolution and search controls, paired FPS bars, and up to three models compared across resolutions. Comparisons hold the paired hardware and review constant. CPU coverage explicitly includes two Ryzen processors in three games. No interpolated FPS, cross-review rankings, invented missing hardware or changes to seller verification.
+- Local checks: 54 unit/database/data-integrity tests pass. All eight reference/gaming browser cases pass across the original reference run plus the corrected gaming-label retest; English/Arabic and desktop/mobile included. Production build, TypeScript and ESLint pass. Desktop and Arabic mobile layouts inspected. No database migration or backend change is needed.
+- Deployed successfully as `dpl_BPjr5uRnVYHZN41aJ4oFbgk9qqnz`. All eight reference/gaming browser checks passed on the production alias, including English/Arabic desktop/mobile, three resolutions, fixed paired hardware, comparison limits, source links and honest empty searches. The final browser selectors exclude transient hidden Next.js streamed markup. The live interface was visually verified and a preview saved to `.artifacts/previews/gaming-benchmarks-live.png`.
+
+### Automatic startup and reference benchmarks — 14 October 2026
+
+- Added a separate public English/Arabic benchmark library with 76 GPU groups, 32 CPU groups and six SSD measurements. Blender 4.5.0 Open Data CC0 medians retain sample counts and source query links; selected factual StorageReview results retain capacities, dates, settings and read/write values. Search, three-part comparisons, storage metric sorting, pagination and honest no-result states are implemented. Different workloads never share rankings. This dated reference snapshot does not grant seller verification badges.
+- Windows task `PC Exchange Egypt - Backend` starts at user sign-in with limited privileges and hidden windows. It supervises installed containers and the project-owned tunnel, retries failures, pauses on `backend:stop`, and updates only public Vercel environment variables. Recovery redeploys the existing production source without uploading local edits. Private Vercel login reuse is restricted to owner/SYSTEM and ignored by Git/deployment.
+- Fixed migration reruns revoking `authenticated` access to private marketplace helper functions. Real Docker acceptance after rerunning all applied migrations confirms schema usage remains granted and migration records remain inaccessible to users.
+- Local validation: 51 unit/SQL/model tests and 35 storefront browser cases pass, with one intentional desktop skip. Includes desktop/mobile, English/Arabic, search, comparison limit/reset, SSD sorting and source links. TypeScript/ESLint, repository formatting and the production build pass.
+- Real startup acceptance: stopped all project containers and its tunnel, resumed the installed Windows task, and observed container recovery, a new reachable tunnel, automatic Vercel production redeployment and `ready` state in about three minutes. The following healthy cycle skipped redeployment. Confirmed exactly one supervisor, hidden execution, limited privileges, a 20-second user-logon trigger, and no execution time limit. Full Windows reboot is not performed; Docker Desktop cold launch remains to be observed at the next sign-in.
+- Deployed the benchmark library as `dpl_FFEbd57xDC18Yvd6hkrqb3eU3s2t`. All four benchmark browser checks passed against the production alias. The complete disposable seller/buyer/admin acceptance passed through the recovered tunnel, including private contacts, photo/PDF storage, pending evidence access, admin approval and revision invalidation; fixtures were cleaned up. The supervisor remains `ready`. This is acceptance of the real PC-hosted Supabase stack, not cloud Supabase.
+
+### Seller marketplace and external email — 14 October 2026
+
+- Replaced the active legacy roles with exactly user/admin in SQL and server guards. A single regular account buys and sells. Required contact setup, signed-in-only contact pages, immediate publication, photos, edit/sold/archive states and structured Complete PC fields are implemented.
+- Added optional PDF benchmark evidence, visible to all signed-in users for a listing's current hardware revision before and after review. The admin queue approves/requests changes/rejects with reasons. Only the latest approved current evidence adds **Benchmark reviewed** for 90 days; hardware edits or replacement evidence invalidate it. Self-review and unauthorized mutations fail.
+- The PC PDF service verifies the owner, bounds input/output to 3 MB and 12 pages, and rebuilds pages as image-only PDFs in a bounded subprocess. Private storage and authenticated no-store downloads enforce access. Company inventory/checkout remain separate.
+- Added resend confirmation and accurate local/external email messages. Configured Brevo without a purchased domain; observed sender-domain rewriting to brevosend.com. SMTP credentials remain in ignored PC files, never Vercel. Current IP authorization and the key's expiry/inactivity policy are documented in `docs/email-setup.md`.
+- Applied `20261014184519_marketplace_benchmark_review.sql` to the running self-hosted Supabase database. This is real local Docker acceptance, not acceptance of a hosted Supabase project.
+- Local evidence: 47 unit/database/model tests; 7 Python/API/PDF tests; 11 real backend checks; English/Arabic email-link journeys via Mailpit before SMTP switch; complete seller/buyer/admin browser workflow with actual image/PDF access and Arabic mobile layout. All disposable records and files removed. The 31 browser regressions pass across the full run plus the corrected filter-label retest; one intentional desktop skip. Production build passes.
+- Deployed successfully as `dpl_7ummAr9HXg9YKnKbBzgH4i3pqmP6` to https://pc-exchange-egypt.vercel.app. Vercel production build and dependency audit passed. The complete seller/buyer/admin acceptance passed through Vercel, including real photo/PDF storage, private download, manual review and revision invalidation; fixtures were removed. All 31 deployed browser regressions passed with one intentional desktop skip. ESLint, TypeScript and repository formatting passed. Earlier marketplace/SMTP limitations in historical milestones are superseded by this section.
+
+### Complete PCs, email confirmation and marketplace discussion — 14 October 2026
+
+- Made the existing `pc-builds` category explicit as Complete PCs / أجهزة كمبيوتر كاملة, with a direct homepage link and category-specific introduction. No inventory was fabricated.
+- Added a server-checked Account verified result page in both languages. Confirmation routes now land there; anonymous visits cannot claim success, invalid/used links explain the failure, and password recovery keeps its separate destination.
+- Corrected the local Auth redirect allowlist for English/Arabic callback query strings and added safe confirmation/recovery email-template fallbacks.
+- Local verification: 37 unit/database/model tests and 31 desktop/mobile browser tests passed (one intentional desktop skip). ESLint, TypeScript and formatting passed. Real disposable Auth registrations passed in English and Arabic, including login denial before confirmation, actual local-mailbox links, verified results, authenticated continuation and reused-link errors; fixtures were removed.
+- Local and Vercel production builds passed. Deployed as `dpl_AGYcKRdD7oLCA6Joo8f9RbCFG6Yv` to the existing production alias. The same English/Arabic disposable registration and confirmation acceptance passed against Vercel using the PC-backed Auth service and local mailbox; fixtures were removed.
+- The full deployed desktop/mobile browser suite passed: 31 tests and one intentional desktop skip, including the new category entry and anonymous confirmation checks.
+- Recorded the owner's decisions and proposed architecture in `docs/marketplace-architecture.md`: one regular account can buy/sell, a separate admin role, signed-in-only seller contact pages, required contact setup and optional private PDF evidence with manual review. These marketplace workflows and the two-role migration are **not yet implemented**; the current permissions still use the earlier staff roles.
+- External SMTP remains unconfigured. Current confirmation emails reach only the private local test mailbox.
+
+### Interactive 3D PC and visual redesign — 14 October 2026
+
+- Replaced the GPU illustration with an original procedural Three.js cutaway PC. GPU, CPU, RAM, motherboard, storage, cooling, power supply and case surfaces route to their existing category URLs.
+- Drag rotation, hover highlighting, projected labels that hide behind other parts, keyboard rotation/reset and ordinary accessible category links. WebGL failure retains usable navigation. Renderer code loads on the client, renders only when needed and releases GPU resources on unmount.
+- New warm-paper, charcoal, vermilion, lavender and chartreuse direction; open homepage composition, oversized typography, coordinated commerce/account surfaces and self-hosted Archivo, Manrope and Cairo. Desktop/mobile and Arabic RTL visually inspected; Arabic mobile artwork alignment corrected.
+- 35 local unit/database/model tests passed. 27 local browser tests passed with one intentional desktop skip, including actual GPU/CPU/SSD mesh clicks and touch taps, drag-versus-click, keyboard controls and fallback navigation. Local production build, TypeScript, ESLint and formatting checks passed.
+- Deployed to the existing Vercel production alias as `dpl_2BY5dfESJC9VaP3k3WaEsdev7AmD`. Vercel's final production build passed. The complete deployed browser suite passed: 27 tests, one intentional desktop skip, including actual mobile touch-drag, mesh taps, Arabic fallback links and the existing storefront flows. Live desktop/mobile/Arabic screenshots were inspected. Browser tests use visible semantic controls to avoid transient hidden copies in Next's streamed HTML.
+- No database migrations or commercial data changes. The model is explicitly a category guide, not a product listing or compatibility claim.
+
+### Earlier Hardware Lab design milestone
+
+The user selected the Hardware Lab direction. Implemented an interactive exploded graphics-card concept with keyboard controls, blueprint artwork, cyan accents, stronger typography, numbered component/collection/process sections and refined category cards. Arabic RTL, mobile layouts and reduced-motion preferences are preserved. Artwork is explicitly conceptual and no commercial inventory was fabricated.
+
+### Earlier hosting verification evidence
+
+- All backend containers started successfully; both migrations applied with checksum/version tracking. PostgreSQL is not published on a host port.
+- 11 live local Auth/REST/Storage/gateway/Python checks passed, including email confirmation, actual customer JWT privilege denial and staff photo upload/read/delete. Test fixtures were removed.
+- 34 domain/database/unit tests passed; Playwright: 17 passed, 1 intentional desktop skip. Includes keyboard interaction with the new artwork and configured empty inventory.
+- Local production build, TypeScript, ESLint and formatting checks passed. Vercel's remote production build succeeded after correcting a root-directory upload exclusion.
+- Deployed-site acceptance passed: homepage/catalog and art interaction; signup via Vercel server action through the HTTPS tunnel; local confirmation email pointing to Vercel; SSR login session; denied customer administration; sign-out and password sign-in; Arabic mobile layout without overflow or client runtime errors. Temporary account/mail were removed.
+
+The sections below record the original foundation milestone. Their initial environment limitations are superseded by this deployment evidence where explicitly noted.
+
+## Completed initial implementation
+
+The empty workspace was preserved and initialized as a Next.js application and a local Git repository on `codex/foundation`. Files remain uncommitted for review. This is a Phase 1 foundation, not full MVP or launch acceptance.
+
+### Milestone 1 — Runtime and domain
+
+- Next.js 16.4 / React 19, strict TypeScript, Tailwind 4, reusable shadcn-compatible UI primitives, Lucide, forms/Zod and notifications.
+- Package lock, ESLint/React/TypeScript rules, Prettier, Vitest, Playwright and environment validation.
+- Integer-piastre parsing and role/input boundaries; no service-role key accepted as public configuration.
+
+### Milestone 2 — Database and integration
+
+- Profiles/roles, bilingual categories, listings, private inventory/costs, orders/lines, reports, configuration and audit records.
+- Versioned application and storage migrations, RLS, explicit grants and safe public views.
+- Atomic inventory saves, stale-edit detection, stock locks/reservations, checkout idempotency, private order projections and staff-only payment transitions.
+- Inspector-only publication, documented test requirement, identity/revision snapshots, authoritative grades and invalidation after hardware changes.
+- Supabase SSR clients and refresh proxy; no privileged server key required.
+
+### Milestone 3 — Storefront and accounts
+
+- Responsive homepage/navigation/category links, indexed catalog filters/pagination and product detail/report routes.
+- English/Arabic copy, actual RTL document direction, empty/error/loading states and localized account forms.
+- Registration/login/reset/confirmation/sign-out integration code; real email/Auth acceptance remains open.
+- Browser-persistent cart, validated authenticated checkout and customer order history with line items.
+- Accurate product structured data, robots and sitemap; no fabricated inventory, ratings, discounts or claims.
+
+### Milestone 4 — Operations
+
+- Protected admin inventory create/edit/publication, cost/stock counters and order processing screens.
+- Inspector report form and customer-visible report scope/expiry.
+- Authorized photo upload with actual decoding, size/pixel limits, WebP normalization and metadata removal.
+- Optional FastAPI boundary with health/authentication/validation and explicit unavailable pricing response.
+
+### Milestone 5 — Documentation and checks
+
+- All ten requested documentation files, the master brief, design and implementation plan are saved.
+- Vercel/standalone container guidance, frontend/analysis Dockerfiles, locked Python requirements and GitHub CI created. Docker builds and remote CI have not been executed.
+- Local preview serves at `http://127.0.0.1:3000/en` and `/ar`; desktop/mobile/Arabic screenshots saved to ignored `.artifacts/previews`.
+
+## Files created
+
+- Application routes/components/actions/domain modules under `src/`; brand icon under `public/`.
+- Two migrations and local configuration under `supabase/`.
+- Domain, environment, upload, database/policy and browser tests under `tests/`.
+- Python API, tests, lockfile and Dockerfile under `services/api/`.
+- Root tooling, CI, Docker configuration and requested documentation; working plan/design/master brief under `docs/`.
+
+## Verification evidence
+
+- `npm test`: 34 passing tests across domain, environment, photo and PostgreSQL policy/workflow suites.
+- Embedded PostgreSQL executes both migrations against isolated Auth/Storage schema scaffolds; real commercial data is never seeded.
+- FastAPI unittest suite: 4 passed. The Windows filesystem sandbox stalled the async test runtime; the same tests passed outside it.
+- Playwright desktop/mobile: 15 passed, 1 intentional desktop skip of the mobile-only navigation case. RTL navigation failure was reproduced and corrected.
+- TypeScript, ESLint and Prettier checks pass; production build passes.
+- `npm audit`: zero reported JavaScript dependency vulnerabilities after replacing the vulnerable Next-specific lint preset.
+- Private environment, virtual environment and generated artifacts verified as ignored by Git. No remote resources created or deployment performed.
+
+## Known limits and remaining work
+
+- Local Supabase, Brevo delivery and the owner's admin account are accepted as described above. Backups and long-lived sessions remain to be operationally accepted.
+- Real concurrent checkout/idempotency, full customer/staff order flows, recovery and live inventory/inspection journeys remain to be accepted beyond the local infrastructure and deployed Auth checks above.
+- The legacy inventory dashboard/order screens are bounded to 100 records, with metric scope disclosed. The unified product register now paginates all products. Order pagination and financial analytics remain open.
+- Cart is browser-local; cross-device carts/merge, saved addresses/profile/preferences and account deletion remain open.
+- Pickup only; real pickup/transfer instructions, shipping fees/zones, private payment evidence, refunds/returns/cancellation requests and reservation expiry remain open.
+- Seller physical inspections now require category-specific checks, visit photos and device identity. Company-stock reports retain their original basic form; bringing those reports onto the stricter checklist and evidence workflow remains open.
+- Pricing/trade-in/consignment/compatibility and advanced analytics are subsequent phases. The direct-contact marketplace is implemented; user-to-user payments, disputes, ratings and general moderation/reporting remain separate future work.
+- No commercial inventory, market price observations, sales, reviews or fabricated verification records were inserted.
+
+## Recommended next step
+
+Review the implemented decisions in `docs/marketplace-architecture.md`. Before public launch, establish a stable backend address and sender domain, backup/restore acceptance, moderation/reporting and Auth abuse controls. Existing company inventory/order acceptance remains tracked in `TESTING.md`.

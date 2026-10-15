@@ -1,0 +1,2117 @@
+{
+  "retrievedAt": "2026-10-15",
+  "models": {
+    "2060": "Nvidia GeForce RTX 2060 6GB",
+    "2070": "GeForce RTX 2070 8GB",
+    "2080": "Nvidia GeForce RTX 2080 8GB",
+    "2600": "AMD Ryzen 5 2600",
+    "3050": "Nvidia GeForce RTX 3050 8GB",
+    "3060": "Nvidia GeForce RTX 3060 12GB",
+    "3070": "GeForce RTX 3070 8GB",
+    "3080": "Nvidia GeForce RTX 3080 10GB",
+    "3090": "Nvidia GeForce RTX 3090 24GB",
+    "3600": "AMD Ryzen 5 3600",
+    "4060": "Nvidia GeForce RTX 4060 8GB",
+    "4070": "GeForce RTX 4070 12GB",
+    "4080": "Nvidia GeForce RTX 4080 16GB",
+    "4090": "Nvidia GeForce RTX 4090 24GB",
+    "5050": "Nvidia GeForce RTX 5050 8GB",
+    "5060": "Nvidia GeForce RTX 5060 8GB",
+    "5070": "GeForce RTX 5070 12GB",
+    "5080": "GeForce RTX 5080",
+    "5090": "GeForce RTX 5090",
+    "5500": "AMD Ryzen 5 5500",
+    "5600": "AMD Ryzen 5 5600",
+    "7600": "AMD Ryzen 5 7600",
+    "7700": "AMD Ryzen 7 7700",
+    "9070": "Radeon RX 9070 16GB",
+    "9800x3d": "AMD Ryzen 7 9800X3D",
+    "7600x": "AMD Ryzen 5 7600X",
+    "9060xt": "Radeon RX 9060 XT 16GB",
+    "7900gre": "Radeon RX 7900 GRE 16GB",
+    "7800xt": "Radeon RX 7800 XT 16GB",
+    "7700xt": "Radeon RX 7700 XT 12GB",
+    "6700xt": "Radeon RX 6700 XT 12GB",
+    "5700xt": "Radeon RX 5700 XT 8GB",
+    "7800x3d": "AMD Ryzen 7 7800X3D",
+    "2060super": "Nvidia GeForce RTX 2060 Super 8GB",
+    "2070super": "Nvidia GeForce RTX 2070 Super 8GB",
+    "2080ti": "Nvidia GeForce RTX 2080 Ti 11GB",
+    "3060ti": "Nvidia GeForce RTX 3060 Ti 8GB",
+    "3070ti": "Nvidia GeForce RTX 3070 Ti 8GB",
+    "3080ti": "Nvidia GeForce RTX 3080 Ti 12GB",
+    "3090ti": "Nvidia GeForce RTX 3090 Ti 24GB",
+    "4060ti8": "Nvidia GeForce RTX 4060 Ti 8GB",
+    "4060ti16": "Nvidia GeForce RTX 4060 Ti 16GB",
+    "5070ti": "Nvidia GeForce RTX 5070 Ti 16GB",
+    "4080super": "Nvidia GeForce RTX 4080 Super 16GB",
+    "4070tisuper": "Nvidia GeForce RTX 4070 Ti Super 16GB",
+    "4070super": "Nvidia GeForce RTX 4070 Super 12GB",
+    "5060ti16": "Nvidia GeForce RTX 5060 Ti 16GB",
+    "5060ti8": "Nvidia GeForce RTX 5060 Ti 8GB",
+    "7600x3d": "AMD Ryzen 5 7600X3D",
+    "285k": "Intel Core Ultra 9 285K",
+    "9700x": "AMD Ryzen 7 9700X",
+    "14900k": "Intel Core i9-14900K",
+    "7700x": "AMD Ryzen 7 7700X",
+    "14700k": "Intel Core i7-14700K",
+    "9600x": "AMD Ryzen 5 9600X",
+    "14600k": "Intel Core i5-14600K",
+    "12900k": "Intel Core i9-12900K",
+    "5800x3d": "AMD Ryzen 7 5800X3D",
+    "7500f": "AMD Ryzen 5 7500F",
+    "12700k": "Intel Core i7-12700K",
+    "12600k": "Intel Core i5-12600K",
+    "12400f": "Intel Core i5-12400F",
+    "8400f": "AMD Ryzen 5 8400F",
+    "5800x": "AMD Ryzen 7 5800X",
+    "11900k": "Intel Core i9-11900K",
+    "10900k": "Intel Core i9-10900K",
+    "10700k": "Intel Core i7-10700K",
+    "10600k": "Intel Core i5-10600K",
+    "12100f": "Intel Core i3-12100F",
+    "2700x": "AMD Ryzen 7 2700X",
+    "9900k": "Intel Core i9-9900K",
+    "3700x": "AMD Ryzen 7 3700X",
+    "9600k": "Intel Core i5-9600K",
+    "7950x3d": "AMD Ryzen 9 7950X3D",
+    "7900x3d": "AMD Ryzen 9 7900X3D",
+    "265k": "Intel Core Ultra 7 265K",
+    "245k": "Intel Core Ultra 5 245K",
+    "7950x": "AMD Ryzen 9 7950X",
+    "9950x": "AMD Ryzen 9 9950X",
+    "9900x": "AMD Ryzen 9 9900X",
+    "7900x": "AMD Ryzen 9 7900X",
+    "5700x3d": "AMD Ryzen 7 5700X3D",
+    "5700x": "AMD Ryzen 7 5700X",
+    "13900k": "Intel Core i9-13900K",
+    "13700k": "Intel Core i7-13700K",
+    "5950x": "AMD Ryzen 9 5950X",
+    "5900x": "AMD Ryzen 9 5900X",
+    "5600x": "AMD Ryzen 5 5600X",
+    "3950x": "AMD Ryzen 9 3950X",
+    "2080super": "Nvidia GeForce RTX 2080 Super 8GB"
+  },
+  "games": {
+    "marvel": "Marvel Rivals",
+    "cyberpunk": "Cyberpunk 2077: Phantom Liberty",
+    "cod": "Call of Duty: Black Ops 6",
+    "siege": "Rainbow Six Siege X",
+    "space-marine": "Warhammer 40,000: Space Marine 2",
+    "tomb-raider": "Shadow of the Tomb Raider",
+    "battlefield": "Battlefield 6",
+    "cyberpunk-original": "Cyberpunk 2077 (launch v1.03)",
+    "alan-wake-2": "Alan Wake 2",
+    "red-dead-2": "Red Dead Redemption 2",
+    "resident-evil-requiem": "Resident Evil Requiem",
+    "spider-man-2": "Marvel's Spider-Man 2",
+    "forza-horizon-6": "Forza Horizon 6",
+    "hogwarts": "Hogwarts Legacy",
+    "starfield": "Starfield",
+    "last-of-us-1": "The Last of Us Part I"
+  },
+  "sources": {
+    "scaling": {
+      "name": {
+        "en": "CPU & GPU scaling",
+        "ar": "مقارنة المعالجات وكروت الشاشة"
+      },
+      "url": "https://www.techspot.com/review/3017-ryzen-9800x3d-vs-7600x-cpu-scaling/",
+      "publishedAt": "2025-07-24",
+      "gpuTestCpu": "9800x3d",
+      "cpuTestGpu": "5090",
+      "platform": {
+        "en": "Three runs per result. Memory, drivers and game build are not specified in this article.",
+        "ar": "ثلاث جولات لكل نتيجة. المقال لا يحدد الذاكرة أو التعريفات أو إصدار اللعبة."
+      },
+      "chartBase": "https://www.techspot.com/articles-info/3017/bench/"
+    },
+    "geforce": {
+      "name": {
+        "en": "GeForce generations",
+        "ar": "أجيال GeForce"
+      },
+      "url": "https://www.techspot.com/review/3057-nvidia-geforce-rtx-70-series/",
+      "publishedAt": "2025-11-18",
+      "gpuTestCpu": null,
+      "cpuTestGpu": null,
+      "platform": {
+        "en": "The article does not specify the CPU, memory, drivers or game build. Compare only within this review.",
+        "ar": "المقال لا يحدد المعالج أو الذاكرة أو التعريفات أو إصدار اللعبة. قارن داخل هذه المراجعة فقط."
+      },
+      "chartBase": "https://www.techspot.com/articles-info/3057/bench/"
+    },
+    "radeon": {
+      "name": {
+        "en": "Radeon generations",
+        "ar": "أجيال Radeon"
+      },
+      "url": "https://www.techspot.com/review/3069-six-years-radeon-tested-midrange/",
+      "publishedAt": "2025-12-09",
+      "gpuTestCpu": "9800x3d",
+      "cpuTestGpu": null,
+      "platform": {
+        "en": "32GB DDR5-6000 CL30 · X670E Master (F38e) · Windows 11 · Adrenalin 25.11.1. Game build not stated.",
+        "ar": "32GB DDR5-6000 CL30 · X670E Master (F38e) · Windows 11 · Adrenalin 25.11.1. إصدار اللعبة غير مذكور."
+      },
+      "chartBase": "https://www.techspot.com/articles-info/3069/bench/"
+    },
+    "sm2-2024": {
+      "name": {
+        "en": "Space Marine 2 · RTX generations (2024)",
+        "ar": "Space Marine 2 · أجيال RTX (2024)"
+      },
+      "url": "https://www.techspot.com/review/2891-warhammer-space-marine-2-benchmark/",
+      "publishedAt": "2024-09-12",
+      "gpuTestCpu": "7800x3d",
+      "cpuTestGpu": null,
+      "platform": {
+        "en": "Ryzen 7 7800X3D, 32GB DDR5-6000 CL30, Windows 11, GeForce 560.94. A demanding battle with large enemy hordes.",
+        "ar": "Ryzen 7 7800X3D وذاكرة 32GB DDR5-6000 CL30 وWindows 11 وتعريف GeForce 560.94. مشهد قتال بحشود كبيرة."
+      },
+      "chartBase": "https://www.techspot.com/articles-info/2891/bench/"
+    },
+    "bf6-gpu": {
+      "name": {
+        "en": "Battlefield 6 · campaign (2025)",
+        "ar": "Battlefield 6 · طور القصة (2025)"
+      },
+      "url": "https://www.techspot.com/review/3042-battlefield-6-benchmark/",
+      "publishedAt": "2025-10-10",
+      "gpuTestCpu": "9800x3d",
+      "cpuTestGpu": null,
+      "platform": {
+        "en": "Ryzen 7 9800X3D, 32GB DDR5-6000 CL30, Windows 11 24H2, GeForce 581.42, ReBAR enabled. Demanding section of campaign mission three.",
+        "ar": "Ryzen 7 9800X3D وذاكرة 32GB DDR5-6000 CL30 وWindows 11 24H2 وتعريف GeForce 581.42 مع ReBAR. مشهد ثقيل من المهمة الثالثة بطور القصة."
+      },
+      "chartBase": "https://www.techspot.com/articles-info/3042/bench/"
+    },
+    "bf6-cpu": {
+      "name": {
+        "en": "Battlefield 6 · Portal bots (2025)",
+        "ar": "Battlefield 6 · بوتات Portal (2025)"
+      },
+      "url": "https://www.techspot.com/review/3043-battlefield-6-cpu-benchmark/",
+      "publishedAt": "2025-10-16",
+      "gpuTestCpu": null,
+      "cpuTestGpu": "5090",
+      "platform": {
+        "en": "RTX 5090, GeForce 581.42. Portal bot match, three-run average. Stock CPUs with memory profiles. AM4/Intel 10th: DDR4-3600 CL14; AM5: DDR5-6000 CL30; Intel 12th/14th: DDR5-7200 CL34; Ultra: DDR5-8200 CL40. Only 1080p published.",
+        "ar": "RTX 5090 وتعريف GeForce 581.42. مباراة بوتات Portal ومتوسط ثلاث جولات. معالجات بترددات المصنع وملفات الذاكرة مفعّلة. تختلف الذاكرة حسب المنصة؛ التفاصيل في المصدر. النتائج منشورة بدقة 1080p فقط."
+      },
+      "chartBase": "https://www.techspot.com/articles-info/3043/bench/"
+    },
+    "legacy-cpu": {
+      "name": {
+        "en": "AM4 / Intel 9th-gen revisit (2023)",
+        "ar": "مراجعة AM4 وIntel الجيل التاسع (2023)"
+      },
+      "url": "https://www.techspot.com/review/2767-ryzen-3600-vs-core-i5-9600k-revisit/",
+      "publishedAt": "2023-11-30",
+      "gpuTestCpu": null,
+      "cpuTestGpu": "4090",
+      "platform": {
+        "en": "RTX 4090, 32GB dual-rank DDR4-3600 CL14, Windows 11. Results from the 2023 revisit; keep separate from later game updates.",
+        "ar": "RTX 4090 وذاكرة 32GB dual-rank DDR4-3600 CL14 وWindows 11. نتائج مراجعة 2023؛ منفصلة عن تحديثات اللعبة اللاحقة."
+      },
+      "chartBase": "https://www.techspot.com/articles-info/2767/bench/"
+    },
+    "cpu-value-2024": {
+      "name": {
+        "en": "CPU value test · Cyberpunk 2.2 (2024)",
+        "ar": "اختبار المعالجات · Cyberpunk 2.2 (2024)"
+      },
+      "url": "https://www.techspot.com/bestof/cpu-value-24-25/",
+      "publishedAt": "2024-12-19",
+      "gpuTestCpu": null,
+      "cpuTestGpu": "4090",
+      "platform": {
+        "en": "RTX 4090, driver 566.36, stock CPUs with XMP/EXPO. AM4 DDR4-3600 CL14, AM5 DDR5-6000 CL30, Core Ultra DDR5-8200 CL40. Windows 11 24H2 (Ultra: 23H2). Cyberpunk patch 2.2; only 1080p published.",
+        "ar": "RTX 4090 وتعريف 566.36 ومعالجات بترددات المصنع مع XMP/EXPO. تختلف إعدادات الذاكرة حسب المنصة. Windows 11 24H2، و23H2 لمعالجات Ultra. تحديث Cyberpunk 2.2؛ نتائج 1080p فقط."
+      },
+      "chartBase": "https://www.techspot.com/articles-info/2936/bench/"
+    },
+    "raptor-cpu": {
+      "name": {
+        "en": "Intel 13th-gen review (2022)",
+        "ar": "مراجعة Intel الجيل الثالث عشر (2022)"
+      },
+      "url": "https://www.techspot.com/review/2554-intel-core-i7-13700k/",
+      "publishedAt": "2022-10-23",
+      "gpuTestCpu": null,
+      "cpuTestGpu": "4090",
+      "platform": {
+        "en": "RTX 4090, Windows 11, ReBAR on. Intel 12th/13th-gen rows use DDR5-6400 CL32; AM5 DDR5-6000 CL30; AM4 DDR4-3600 CL14. Default power behavior without imposed power limits. This game chart reports 1080p only.",
+        "ar": "RTX 4090 وWindows 11 مع ReBAR. معالجات Intel الجيل 12 و13 تستخدم DDR5-6400 CL32؛ وAM5 تستخدم DDR5-6000 CL30؛ وAM4 تستخدم DDR4-3600 CL14. إعدادات الطاقة الافتراضية بدون حدود مفروضة. رسم هذه اللعبة يعرض 1080p فقط."
+      },
+      "chartBase": "https://www.techspot.com/articles-info/2554/bench/"
+    },
+    "cyberpunk-2020": {
+      "name": {
+        "en": "RTX 20-series · launch build (2020)",
+        "ar": "سلسلة RTX 20 · نسخة الإطلاق (2020)"
+      },
+      "url": "https://www.techspot.com/article/2164-cyberpunk-benchmarks/",
+      "publishedAt": "2020-12-11",
+      "gpuTestCpu": "5950x",
+      "cpuTestGpu": null,
+      "platform": {
+        "en": "Ryzen 9 5950X, 32GB DDR4, MSI X570 Unify. Game v1.03, Little China in rain, Streetkid path. Historical launch-build results; not comparable to Phantom Liberty or current patches.",
+        "ar": "Ryzen 9 5950X وذاكرة 32GB DDR4 ولوحة MSI X570 Unify. نسخة اللعبة 1.03 بمنطقة Little China تحت المطر بمسار Streetkid. نتائج تاريخية لنسخة الإطلاق ولا تُقارن بـPhantom Liberty أو التحديثات الحالية."
+      },
+      "chartBase": "https://www.techspot.com/articles-info/2164/bench/"
+    },
+    "gre-2026": {
+      "name": {
+        "en": "Radeon / GeForce review (2026)",
+        "ar": "مراجعة Radeon وGeForce (2026)"
+      },
+      "url": "https://www.techspot.com/review/3133-amd-radeon-9070-gre/",
+      "publishedAt": "2026-06-02",
+      "gpuTestCpu": null,
+      "cpuTestGpu": null,
+      "platform": {
+        "en": "The article does not specify the test CPU, memory, driver versions or game builds. Selected charts report 1440p and 4K only.",
+        "ar": "المقال لا يحدد معالج الاختبار أو الذاكرة أو إصدارات التعريفات والألعاب. الرسوم المختارة تعرض 1440p و4K فقط."
+      },
+      "chartBase": "https://www.techspot.com/articles-info/3133/bench/"
+    },
+    "super-2024": {
+      "name": {
+        "en": "RTX 4070 Super review (2024)",
+        "ar": "مراجعة RTX 4070 Super (2024)"
+      },
+      "url": "https://www.techspot.com/review/2791-nvidia-geforce-rtx-4070-super/",
+      "publishedAt": "2024-01-16",
+      "gpuTestCpu": "7800x3d",
+      "cpuTestGpu": null,
+      "platform": {
+        "en": "Ryzen 7 7800X3D, 32GB DDR5-6000; driver version and game builds unspecified. Individual game charts publish 1440p and 4K, not 1080p.",
+        "ar": "Ryzen 7 7800X3D وذاكرة 32GB DDR5-6000؛ إصدارات التعريفات والألعاب غير محددة. رسوم الألعاب الفردية تنشر 1440p و4K دون 1080p."
+      },
+      "chartBase": "https://www.techspot.com/articles-info/2791/bench/"
+    },
+    "rdr-2019": {
+      "name": {
+        "en": "Red Dead Redemption 2 · launch test (2019)",
+        "ar": "Red Dead Redemption 2 · اختبار الإطلاق (2019)"
+      },
+      "url": "https://www.techspot.com/review/1939-red-dead-redemption-2-benchmarks/",
+      "publishedAt": "2019-11-07",
+      "gpuTestCpu": "9900k",
+      "cpuTestGpu": null,
+      "platform": {
+        "en": "Core i9-9900K at 5GHz, 16GB DDR4-3400. In-game Colter test, not the built-in benchmark. Historical 2019 results; current patches may differ.",
+        "ar": "Core i9-9900K بتردد 5GHz وذاكرة 16GB DDR4-3400. اختبار داخل منطقة Colter، وليس الاختبار المدمج. نتائج تاريخية من 2019 وقد تختلف مع التحديثات الحالية."
+      },
+      "chartBase": "https://www.techspot.com/articles-info/1939/images/"
+    }
+  },
+  "tests": [
+    {
+      "id": "scaling-marvel",
+      "sourceId": "scaling",
+      "gameId": "marvel",
+      "preset": "Ultra",
+      "rendering": {
+        "en": "Upscaling, frame generation and ray tracing settings are not specified.",
+        "ar": "إعدادات رفع الدقة وتوليد الإطارات وتتبع الأشعة غير محددة."
+      },
+      "charts": ["MR-1U.png", "MR-2U.png", "MR-3U.png"],
+      "systems": [
+        {
+          "cpu": "9800x3d",
+          "gpu": "5090",
+          "fps": [
+            [157, 121],
+            [132, 104],
+            [90, 71]
+          ]
+        },
+        {
+          "cpu": "9800x3d",
+          "gpu": "5080",
+          "fps": [
+            [120, 91],
+            [94, 73],
+            [59, 48]
+          ]
+        },
+        {
+          "cpu": "9800x3d",
+          "gpu": "9070",
+          "fps": [
+            [106, 81],
+            [78, 59],
+            [44, 34]
+          ]
+        },
+        {
+          "cpu": "9800x3d",
+          "gpu": "9060xt",
+          "fps": [
+            [72, 55],
+            [50, 37],
+            [27, 21]
+          ]
+        },
+        {
+          "cpu": "7600x",
+          "gpu": "5090",
+          "fps": [
+            [130, 96],
+            [126, 92],
+            [89, 70]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "scaling-siege",
+      "sourceId": "scaling",
+      "gameId": "siege",
+      "preset": "Ultra+",
+      "rendering": {
+        "en": "100% render scale · built-in benchmark. Frame generation and ray tracing settings are not specified.",
+        "ar": "مقياس رندر 100% · الاختبار المدمج. إعدادات توليد الإطارات وتتبع الأشعة غير محددة."
+      },
+      "charts": ["RSS-1U.png", "RSS-2U.png", "RSS-3U.png"],
+      "systems": [
+        {
+          "cpu": "9800x3d",
+          "gpu": "5090",
+          "fps": [
+            [524, 410],
+            [410, 313],
+            [238, 185]
+          ]
+        },
+        {
+          "cpu": "9800x3d",
+          "gpu": "5080",
+          "fps": [
+            [373, 271],
+            [259, 196],
+            [133, 103]
+          ]
+        },
+        {
+          "cpu": "9800x3d",
+          "gpu": "9070",
+          "fps": [
+            [301, 223],
+            [198, 146],
+            [96, 73]
+          ]
+        },
+        {
+          "cpu": "9800x3d",
+          "gpu": "9060xt",
+          "fps": [
+            [200, 150],
+            [125, 94],
+            [59, 45]
+          ]
+        },
+        {
+          "cpu": "7600x",
+          "gpu": "5090",
+          "fps": [
+            [414, 302],
+            [392, 288],
+            [238, 185]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "scaling-space-marine",
+      "sourceId": "scaling",
+      "gameId": "space-marine",
+      "preset": "Ultra",
+      "rendering": {
+        "en": "Native TAA · 4K texture pack · horde battle. Frame generation and ray tracing settings are not specified.",
+        "ar": "Native TAA · حزمة خامات 4K · معركة حشود. إعدادات توليد الإطارات وتتبع الأشعة غير محددة."
+      },
+      "charts": ["SM-1U.png", "SM-2U.png", "SM-3U.png"],
+      "systems": [
+        {
+          "cpu": "9800x3d",
+          "gpu": "5090",
+          "fps": [
+            [127, 101],
+            [123, 99],
+            [119, 94]
+          ]
+        },
+        {
+          "cpu": "9800x3d",
+          "gpu": "5080",
+          "fps": [
+            [125, 98],
+            [122, 90],
+            [84, 72]
+          ]
+        },
+        {
+          "cpu": "9800x3d",
+          "gpu": "9070",
+          "fps": [
+            [124, 97],
+            [104, 89],
+            [62, 50]
+          ]
+        },
+        {
+          "cpu": "9800x3d",
+          "gpu": "9060xt",
+          "fps": [
+            [92, 80],
+            [70, 60],
+            [38, 31]
+          ]
+        },
+        {
+          "cpu": "7600x",
+          "gpu": "5090",
+          "fps": [
+            [90, 77],
+            [90, 76],
+            [89, 75]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "geforce-cyberpunk",
+      "sourceId": "geforce",
+      "gameId": "cyberpunk",
+      "preset": "High",
+      "charts": ["CP20772H.png", "CP20772H.png", "CP20772H.png"],
+      "systems": [
+        {
+          "cpu": null,
+          "gpu": "5070",
+          "fps": [
+            [155, 131],
+            [107, 92],
+            [55, 47]
+          ]
+        },
+        {
+          "cpu": null,
+          "gpu": "4070",
+          "fps": [
+            [127, 109],
+            [85, 75],
+            [38, 29]
+          ]
+        },
+        {
+          "cpu": null,
+          "gpu": "3070",
+          "fps": [
+            [103, 86],
+            [68, 58],
+            [35, 26]
+          ]
+        },
+        {
+          "cpu": null,
+          "gpu": "2070",
+          "fps": [
+            [67, 57],
+            [43, 37],
+            [22, 17]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "geforce-cod",
+      "sourceId": "geforce",
+      "gameId": "cod",
+      "preset": "Extreme",
+      "charts": ["CoD2H.png", "CoD2H.png", "CoD2H.png"],
+      "systems": [
+        {
+          "cpu": null,
+          "gpu": "5070",
+          "fps": [
+            [119, 87],
+            [81, 56],
+            [45, 28]
+          ]
+        },
+        {
+          "cpu": null,
+          "gpu": "4070",
+          "fps": [
+            [113, 82],
+            [79, 55],
+            [44, 28]
+          ]
+        },
+        {
+          "cpu": null,
+          "gpu": "3070",
+          "fps": [
+            [81, 57],
+            [60, 41],
+            [33, 21]
+          ]
+        },
+        {
+          "cpu": null,
+          "gpu": "2070",
+          "fps": [
+            [44, 30],
+            [30, 20],
+            [17, 11]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "geforce-tomb-raider",
+      "sourceId": "geforce",
+      "gameId": "tomb-raider",
+      "preset": "Highest",
+      "charts": ["SotTR2H.png", "SotTR2H.png", "SotTR2H.png"],
+      "systems": [
+        {
+          "cpu": null,
+          "gpu": "5070",
+          "fps": [
+            [261, 228],
+            [182, 162],
+            [97, 82]
+          ]
+        },
+        {
+          "cpu": null,
+          "gpu": "4070",
+          "fps": [
+            [208, 177],
+            [143, 122],
+            [77, 63]
+          ]
+        },
+        {
+          "cpu": null,
+          "gpu": "3070",
+          "fps": [
+            [158, 141],
+            [113, 97],
+            [62, 50]
+          ]
+        },
+        {
+          "cpu": null,
+          "gpu": "2070",
+          "fps": [
+            [102, 89],
+            [72, 58],
+            [40, 30]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "radeon-cyberpunk",
+      "sourceId": "radeon",
+      "gameId": "cyberpunk",
+      "preset": "High",
+      "charts": ["CP20772.png", "CP20772.png", "CP20772.png"],
+      "systems": [
+        {
+          "cpu": "9800x3d",
+          "gpu": "9070",
+          "fps": [
+            [172, 111],
+            [120, 82],
+            [64, 46]
+          ]
+        },
+        {
+          "cpu": "9800x3d",
+          "gpu": "7900gre",
+          "fps": [
+            [138, 96],
+            [96, 68],
+            [48, 36]
+          ]
+        },
+        {
+          "cpu": "9800x3d",
+          "gpu": "7800xt",
+          "fps": [
+            [136, 94],
+            [93, 66],
+            [43, 33]
+          ]
+        },
+        {
+          "cpu": "9800x3d",
+          "gpu": "7700xt",
+          "fps": [
+            [113, 76],
+            [77, 55],
+            [39, 27]
+          ]
+        },
+        {
+          "cpu": "9800x3d",
+          "gpu": "6700xt",
+          "fps": [
+            [89, 63],
+            [58, 40],
+            [27, 19]
+          ]
+        },
+        {
+          "cpu": "9800x3d",
+          "gpu": "5700xt",
+          "fps": [
+            [63, 50],
+            [42, 30],
+            [21, 15]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "radeon-cod",
+      "sourceId": "radeon",
+      "gameId": "cod",
+      "preset": "Extreme",
+      "charts": ["CoD2.png", "CoD2.png", "CoD2.png"],
+      "systems": [
+        {
+          "cpu": "9800x3d",
+          "gpu": "9070",
+          "fps": [
+            [173, 141],
+            [125, 87],
+            [70, 45]
+          ]
+        },
+        {
+          "cpu": "9800x3d",
+          "gpu": "7900gre",
+          "fps": [
+            [142, 105],
+            [103, 72],
+            [58, 38]
+          ]
+        },
+        {
+          "cpu": "9800x3d",
+          "gpu": "7800xt",
+          "fps": [
+            [136, 99],
+            [97, 66],
+            [54, 35]
+          ]
+        },
+        {
+          "cpu": "9800x3d",
+          "gpu": "7700xt",
+          "fps": [
+            [105, 77],
+            [81, 56],
+            [45, 30]
+          ]
+        },
+        {
+          "cpu": "9800x3d",
+          "gpu": "6700xt",
+          "fps": [
+            [90, 63],
+            [60, 40],
+            [32, 21]
+          ]
+        },
+        {
+          "cpu": "9800x3d",
+          "gpu": "5700xt",
+          "fps": [
+            [64, 47],
+            [43, 29],
+            [24, 16]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "radeon-tomb-raider",
+      "sourceId": "radeon",
+      "gameId": "tomb-raider",
+      "preset": "Highest",
+      "charts": ["SotTR2.png", "SotTR2.png", "SotTR2.png"],
+      "systems": [
+        {
+          "cpu": "9800x3d",
+          "gpu": "9070",
+          "fps": [
+            [234, 198],
+            [175, 156],
+            [101, 88]
+          ]
+        },
+        {
+          "cpu": "9800x3d",
+          "gpu": "7900gre",
+          "fps": [
+            [186, 165],
+            [139, 127],
+            [78, 65]
+          ]
+        },
+        {
+          "cpu": "9800x3d",
+          "gpu": "7800xt",
+          "fps": [
+            [179, 159],
+            [133, 121],
+            [72, 60]
+          ]
+        },
+        {
+          "cpu": "9800x3d",
+          "gpu": "7700xt",
+          "fps": [
+            [157, 142],
+            [114, 101],
+            [61, 50]
+          ]
+        },
+        {
+          "cpu": "9800x3d",
+          "gpu": "6700xt",
+          "fps": [
+            [135, 121],
+            [98, 85],
+            [54, 44]
+          ]
+        },
+        {
+          "cpu": "9800x3d",
+          "gpu": "5700xt",
+          "fps": [
+            [108, 93],
+            [76, 67],
+            [40, 30]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sm2-2024",
+      "sourceId": "sm2-2024",
+      "gameId": "space-marine",
+      "preset": "Ultra",
+      "kinds": ["gpu"],
+      "rendering": {
+        "en": "Native resolution, Ultra preset. No upscaling or frame generation.",
+        "ar": "دقة أصلية وإعداد Ultra. بدون رفع دقة أو توليد إطارات."
+      },
+      "charts": ["1080p-Ultra.png", "1440p-Ultra.png", "2160p-Ultra.png"],
+      "systems": [
+        {
+          "cpu": "7800x3d",
+          "gpu": "2060super",
+          "fps": [
+            [51, 42],
+            [36, 32],
+            [20, 17]
+          ]
+        },
+        {
+          "cpu": "7800x3d",
+          "gpu": "2070super",
+          "fps": [
+            [65, 54],
+            [45, 39],
+            [24, 19]
+          ]
+        },
+        {
+          "cpu": "7800x3d",
+          "gpu": "2080ti",
+          "fps": [
+            [78, 69],
+            [57, 49],
+            [31, 26]
+          ]
+        },
+        {
+          "cpu": "7800x3d",
+          "gpu": "3050",
+          "fps": [
+            [43, 37],
+            [29, 24],
+            [20, 17]
+          ]
+        },
+        {
+          "cpu": "7800x3d",
+          "gpu": "3060",
+          "fps": [
+            [59, 51],
+            [40, 35],
+            [22, 19]
+          ]
+        },
+        {
+          "cpu": "7800x3d",
+          "gpu": "3060ti",
+          "fps": [
+            [78, 70],
+            [55, 46],
+            [29, 25]
+          ]
+        },
+        {
+          "cpu": "7800x3d",
+          "gpu": "3070",
+          "fps": [
+            [90, 78],
+            [63, 53],
+            [35, 31]
+          ]
+        },
+        {
+          "cpu": "7800x3d",
+          "gpu": "3070ti",
+          "fps": [
+            [93, 80],
+            [65, 54],
+            [36, 32]
+          ]
+        },
+        {
+          "cpu": "7800x3d",
+          "gpu": "3080",
+          "fps": [
+            [113, 100],
+            [87, 77],
+            [51, 42]
+          ]
+        },
+        {
+          "cpu": "7800x3d",
+          "gpu": "3080ti",
+          "fps": [
+            [113, 100],
+            [89, 79],
+            [52, 43]
+          ]
+        },
+        {
+          "cpu": "7800x3d",
+          "gpu": "3090",
+          "fps": [
+            [113, 100],
+            [93, 82],
+            [54, 45]
+          ]
+        },
+        {
+          "cpu": "7800x3d",
+          "gpu": "3090ti",
+          "fps": [
+            [113, 100],
+            [95, 84],
+            [55, 47]
+          ]
+        },
+        {
+          "cpu": "7800x3d",
+          "gpu": "4060",
+          "fps": [
+            [70, 60],
+            [48, 40],
+            [25, 21]
+          ]
+        },
+        {
+          "cpu": "7800x3d",
+          "gpu": "4060ti8",
+          "fps": [
+            [90, 77],
+            [61, 51],
+            [30, 26]
+          ]
+        },
+        {
+          "cpu": "7800x3d",
+          "gpu": "4060ti16",
+          "fps": [
+            [92, 80],
+            [62, 53],
+            [31, 27]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bf6-gpu",
+      "sourceId": "bf6-gpu",
+      "gameId": "battlefield",
+      "preset": "High",
+      "kinds": ["gpu"],
+      "rendering": {
+        "en": "High preset, TAA at native resolution; no upscaling or frame generation.",
+        "ar": "إعداد High مع TAA بدقة أصلية؛ بدون رفع دقة أو توليد إطارات."
+      },
+      "charts": ["High-1080.png", "High-1440.png", "High-2160.png"],
+      "systems": [
+        {
+          "cpu": "9800x3d",
+          "gpu": "5090",
+          "fps": [
+            [241, 167],
+            [213, 133],
+            [143, 98]
+          ]
+        },
+        {
+          "cpu": "9800x3d",
+          "gpu": "5080",
+          "fps": [
+            [216, 150],
+            [163, 102],
+            [94, 76]
+          ]
+        },
+        {
+          "cpu": "9800x3d",
+          "gpu": "4090",
+          "fps": [
+            [204, 142],
+            [166, 104],
+            [106, 85]
+          ]
+        },
+        {
+          "cpu": "9800x3d",
+          "gpu": "5070ti",
+          "fps": [
+            [203, 141],
+            [150, 95],
+            [86, 71]
+          ]
+        },
+        {
+          "cpu": "9800x3d",
+          "gpu": "4080super",
+          "fps": [
+            [177, 96],
+            [138, 86],
+            [85, 70]
+          ]
+        },
+        {
+          "cpu": "9800x3d",
+          "gpu": "5070",
+          "fps": [
+            [175, 96],
+            [124, 89],
+            [65, 55]
+          ]
+        },
+        {
+          "cpu": "9800x3d",
+          "gpu": "4080",
+          "fps": [
+            [174, 94],
+            [135, 83],
+            [83, 69]
+          ]
+        },
+        {
+          "cpu": "9800x3d",
+          "gpu": "4070tisuper",
+          "fps": [
+            [156, 93],
+            [119, 78],
+            [71, 58]
+          ]
+        },
+        {
+          "cpu": "9800x3d",
+          "gpu": "4070super",
+          "fps": [
+            [141, 88],
+            [101, 69],
+            [61, 50]
+          ]
+        },
+        {
+          "cpu": "9800x3d",
+          "gpu": "5060ti16",
+          "fps": [
+            [138, 91],
+            [94, 75],
+            [50, 43]
+          ]
+        },
+        {
+          "cpu": "9800x3d",
+          "gpu": "5060ti8",
+          "fps": [
+            [131, 73],
+            [84, 57],
+            [32, 19]
+          ]
+        },
+        {
+          "cpu": "9800x3d",
+          "gpu": "4070",
+          "fps": [
+            [130, 80],
+            [93, 61],
+            [54, 42]
+          ]
+        },
+        {
+          "cpu": "9800x3d",
+          "gpu": "5060",
+          "fps": [
+            [110, 74],
+            [66, 39],
+            [28, 17]
+          ]
+        },
+        {
+          "cpu": "9800x3d",
+          "gpu": "5050",
+          "fps": [
+            [73, 56],
+            [48, 33],
+            [19, 11]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bf6-cpu",
+      "sourceId": "bf6-cpu",
+      "gameId": "battlefield",
+      "preset": "High",
+      "kinds": ["cpu"],
+      "rendering": {
+        "en": "High preset, native TAA; no upscaling or frame generation. The Portal scenario differs from the GPU campaign test.",
+        "ar": "إعداد High وTAA بدقة أصلية بدون رفع دقة أو توليد إطارات. سيناريو Portal مختلف عن اختبار كروت الشاشة بطور القصة."
+      },
+      "charts": ["2025-10-15-image-2.png", null, null],
+      "systems": [
+        {
+          "cpu": "9800x3d",
+          "gpu": "5090",
+          "fps": [[198, 147], null, null]
+        },
+        {
+          "cpu": "7600x3d",
+          "gpu": "5090",
+          "fps": [[159, 132], null, null]
+        },
+        {
+          "cpu": "285k",
+          "gpu": "5090",
+          "fps": [[157, 131], null, null]
+        },
+        {
+          "cpu": "9700x",
+          "gpu": "5090",
+          "fps": [[157, 126], null, null]
+        },
+        {
+          "cpu": "14900k",
+          "gpu": "5090",
+          "fps": [[154, 129], null, null]
+        },
+        {
+          "cpu": "7700x",
+          "gpu": "5090",
+          "fps": [[154, 124], null, null]
+        },
+        {
+          "cpu": "14700k",
+          "gpu": "5090",
+          "fps": [[150, 126], null, null]
+        },
+        {
+          "cpu": "9600x",
+          "gpu": "5090",
+          "fps": [[148, 118], null, null]
+        },
+        {
+          "cpu": "7600x",
+          "gpu": "5090",
+          "fps": [[147, 117], null, null]
+        },
+        {
+          "cpu": "14600k",
+          "gpu": "5090",
+          "fps": [[144, 116], null, null]
+        },
+        {
+          "cpu": "12900k",
+          "gpu": "5090",
+          "fps": [[142, 112], null, null]
+        },
+        {
+          "cpu": "5800x3d",
+          "gpu": "5090",
+          "fps": [[142, 106], null, null]
+        },
+        {
+          "cpu": "7500f",
+          "gpu": "5090",
+          "fps": [[141, 112], null, null]
+        },
+        {
+          "cpu": "12700k",
+          "gpu": "5090",
+          "fps": [[138, 108], null, null]
+        },
+        {
+          "cpu": "12600k",
+          "gpu": "5090",
+          "fps": [[133, 101], null, null]
+        },
+        {
+          "cpu": "12400f",
+          "gpu": "5090",
+          "fps": [[122, 93], null, null]
+        },
+        {
+          "cpu": "8400f",
+          "gpu": "5090",
+          "fps": [[113, 84], null, null]
+        },
+        {
+          "cpu": "5800x",
+          "gpu": "5090",
+          "fps": [[111, 83], null, null]
+        },
+        {
+          "cpu": "11900k",
+          "gpu": "5090",
+          "fps": [[110, 81], null, null]
+        },
+        {
+          "cpu": "10900k",
+          "gpu": "5090",
+          "fps": [[103, 79], null, null]
+        },
+        {
+          "cpu": "10700k",
+          "gpu": "5090",
+          "fps": [[100, 75], null, null]
+        },
+        {
+          "cpu": "10600k",
+          "gpu": "5090",
+          "fps": [[95, 70], null, null]
+        },
+        {
+          "cpu": "5600",
+          "gpu": "5090",
+          "fps": [[94, 70], null, null]
+        },
+        {
+          "cpu": "3600",
+          "gpu": "5090",
+          "fps": [[91, 68], null, null]
+        },
+        {
+          "cpu": "5500",
+          "gpu": "5090",
+          "fps": [[89, 67], null, null]
+        },
+        {
+          "cpu": "12100f",
+          "gpu": "5090",
+          "fps": [[85, 51], null, null]
+        },
+        {
+          "cpu": "2700x",
+          "gpu": "5090",
+          "fps": [[77, 59], null, null]
+        },
+        {
+          "cpu": "2600",
+          "gpu": "5090",
+          "fps": [[67, 52], null, null]
+        }
+      ]
+    },
+    {
+      "id": "legacy-cpu",
+      "sourceId": "legacy-cpu",
+      "gameId": "cyberpunk",
+      "preset": "Ultra",
+      "kinds": ["cpu"],
+      "charts": ["CP2077.png", "CP2077.png", "CP2077.png"],
+      "systems": [
+        {
+          "cpu": "5800x3d",
+          "gpu": "4090",
+          "fps": [
+            [142, 120],
+            [141, 119],
+            [75, 66]
+          ]
+        },
+        {
+          "cpu": "9900k",
+          "gpu": "4090",
+          "fps": [
+            [108, 94],
+            [107, 89],
+            [75, 63]
+          ]
+        },
+        {
+          "cpu": "3700x",
+          "gpu": "4090",
+          "fps": [
+            [85, 71],
+            [85, 71],
+            [74, 60]
+          ]
+        },
+        {
+          "cpu": "3600",
+          "gpu": "4090",
+          "fps": [
+            [83, 70],
+            [83, 70],
+            [73, 60]
+          ]
+        },
+        {
+          "cpu": "9600k",
+          "gpu": "4090",
+          "fps": [
+            [82, 68],
+            [80, 67],
+            [71, 58]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cpu-value-2024",
+      "sourceId": "cpu-value-2024",
+      "gameId": "cyberpunk",
+      "preset": "High",
+      "kinds": ["cpu"],
+      "charts": ["CP2077.png", null, null],
+      "systems": [
+        {
+          "cpu": "9800x3d",
+          "gpu": "4090",
+          "fps": [[219, 148], null, null]
+        },
+        {
+          "cpu": "7800x3d",
+          "gpu": "4090",
+          "fps": [[202, 143], null, null]
+        },
+        {
+          "cpu": "7950x3d",
+          "gpu": "4090",
+          "fps": [[185, 136], null, null]
+        },
+        {
+          "cpu": "7900x3d",
+          "gpu": "4090",
+          "fps": [[177, 133], null, null]
+        },
+        {
+          "cpu": "265k",
+          "gpu": "4090",
+          "fps": [[168, 126], null, null]
+        },
+        {
+          "cpu": "7700",
+          "gpu": "4090",
+          "fps": [[164, 121], null, null]
+        },
+        {
+          "cpu": "5800x3d",
+          "gpu": "4090",
+          "fps": [[164, 117], null, null]
+        },
+        {
+          "cpu": "245k",
+          "gpu": "4090",
+          "fps": [[161, 119], null, null]
+        },
+        {
+          "cpu": "7950x",
+          "gpu": "4090",
+          "fps": [[161, 118], null, null]
+        },
+        {
+          "cpu": "9950x",
+          "gpu": "4090",
+          "fps": [[160, 119], null, null]
+        },
+        {
+          "cpu": "9900x",
+          "gpu": "4090",
+          "fps": [[158, 115], null, null]
+        },
+        {
+          "cpu": "7900x",
+          "gpu": "4090",
+          "fps": [[157, 117], null, null]
+        },
+        {
+          "cpu": "5700x3d",
+          "gpu": "4090",
+          "fps": [[157, 111], null, null]
+        },
+        {
+          "cpu": "7600",
+          "gpu": "4090",
+          "fps": [[152, 108], null, null]
+        },
+        {
+          "cpu": "5700x",
+          "gpu": "4090",
+          "fps": [[126, 91], null, null]
+        }
+      ]
+    },
+    {
+      "id": "raptor-cpu",
+      "sourceId": "raptor-cpu",
+      "gameId": "tomb-raider",
+      "preset": "Highest",
+      "kinds": ["cpu"],
+      "charts": ["SotTRr.png", null, null],
+      "systems": [
+        {
+          "cpu": "13900k",
+          "gpu": "4090",
+          "fps": [[288, 226], null, null]
+        },
+        {
+          "cpu": "13700k",
+          "gpu": "4090",
+          "fps": [[275, 214], null, null]
+        },
+        {
+          "cpu": "7950x",
+          "gpu": "4090",
+          "fps": [[264, 210], null, null]
+        },
+        {
+          "cpu": "5800x3d",
+          "gpu": "4090",
+          "fps": [[262, 210], null, null]
+        },
+        {
+          "cpu": "7900x",
+          "gpu": "4090",
+          "fps": [[259, 209], null, null]
+        },
+        {
+          "cpu": "7700x",
+          "gpu": "4090",
+          "fps": [[255, 205], null, null]
+        },
+        {
+          "cpu": "12900k",
+          "gpu": "4090",
+          "fps": [[254, 208], null, null]
+        },
+        {
+          "cpu": "7600x",
+          "gpu": "4090",
+          "fps": [[244, 187], null, null]
+        },
+        {
+          "cpu": "12700k",
+          "gpu": "4090",
+          "fps": [[239, 198], null, null]
+        },
+        {
+          "cpu": "12600k",
+          "gpu": "4090",
+          "fps": [[214, 177], null, null]
+        },
+        {
+          "cpu": "5950x",
+          "gpu": "4090",
+          "fps": [[199, 158], null, null]
+        },
+        {
+          "cpu": "5900x",
+          "gpu": "4090",
+          "fps": [[189, 151], null, null]
+        },
+        {
+          "cpu": "5800x",
+          "gpu": "4090",
+          "fps": [[182, 147], null, null]
+        },
+        {
+          "cpu": "5600x",
+          "gpu": "4090",
+          "fps": [[175, 142], null, null]
+        },
+        {
+          "cpu": "3950x",
+          "gpu": "4090",
+          "fps": [[157, 131], null, null]
+        }
+      ]
+    },
+    {
+      "id": "cyberpunk-2020",
+      "sourceId": "cyberpunk-2020",
+      "gameId": "cyberpunk-original",
+      "preset": "Ultra",
+      "kinds": ["gpu"],
+      "rendering": {
+        "en": "Ultra rasterization preset at native resolution. Ray tracing and DLSS were covered separately by the publisher.",
+        "ar": "إعداد Ultra بدقة أصلية. اختبارات تتبع الأشعة وDLSS نشرها المصدر في مقال منفصل."
+      },
+      "charts": ["1080p_Ultra.png", "1440p_Ultra.png", "4K_Ultra.png"],
+      "systems": [
+        {
+          "cpu": "5950x",
+          "gpu": "2080ti",
+          "fps": [
+            [83, 69],
+            [56, 49],
+            [30, 27]
+          ]
+        },
+        {
+          "cpu": "5950x",
+          "gpu": "2080super",
+          "fps": [
+            [74, 60],
+            [48, 42],
+            [24, 22]
+          ]
+        },
+        {
+          "cpu": "5950x",
+          "gpu": "2080",
+          "fps": [
+            [71, 58],
+            [46, 40],
+            [23, 21]
+          ]
+        },
+        {
+          "cpu": "5950x",
+          "gpu": "2070super",
+          "fps": [
+            [68, 55],
+            [44, 38],
+            [22, 20]
+          ]
+        },
+        {
+          "cpu": "5950x",
+          "gpu": "2070",
+          "fps": [
+            [58, 48],
+            [37, 32],
+            [19, 17]
+          ]
+        },
+        {
+          "cpu": "5950x",
+          "gpu": "2060super",
+          "fps": [
+            [56, 46],
+            [36, 31],
+            [20, 18]
+          ]
+        },
+        {
+          "cpu": "5950x",
+          "gpu": "2060",
+          "fps": [
+            [53, 44],
+            [34, 29],
+            [16, 15]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gre-requiem",
+      "sourceId": "gre-2026",
+      "gameId": "resident-evil-requiem",
+      "preset": "Max",
+      "kinds": ["gpu"],
+      "rendering": {
+        "en": "Main quality-preset chart, separate from the review’s ray tracing section. Render scale, upscaling and frame generation are not specified for this chart.",
+        "ar": "رسم إعداد الجودة الأساسي، منفصل عن قسم تتبع الأشعة بالمراجعة. مقياس الرندر ورفع الدقة وتوليد الإطارات غير محددة لهذا الرسم."
+      },
+      "charts": [null, "RE.png", "RE.png"],
+      "systems": [
+        {
+          "cpu": null,
+          "gpu": "5070ti",
+          "fps": [null, [137, 107], [82, 70]]
+        },
+        {
+          "cpu": null,
+          "gpu": "9070",
+          "fps": [null, [125, 93], [72, 60]]
+        },
+        {
+          "cpu": null,
+          "gpu": "5070",
+          "fps": [null, [111, 94], [63, 52]]
+        },
+        {
+          "cpu": null,
+          "gpu": "7900gre",
+          "fps": [null, [94, 77], [50, 44]]
+        },
+        {
+          "cpu": null,
+          "gpu": "5060ti16",
+          "fps": [null, [87, 66], [48, 37]]
+        },
+        {
+          "cpu": null,
+          "gpu": "9060xt",
+          "fps": [null, [78, 59], [42, 33]]
+        }
+      ]
+    },
+    {
+      "id": "gre-spider-2",
+      "sourceId": "gre-2026",
+      "gameId": "spider-man-2",
+      "preset": "Very High",
+      "kinds": ["gpu"],
+      "rendering": {
+        "en": "Main quality-preset chart, separate from the review’s ray tracing section. Render scale, upscaling and frame generation are not specified for this chart.",
+        "ar": "رسم إعداد الجودة الأساسي، منفصل عن قسم تتبع الأشعة بالمراجعة. مقياس الرندر ورفع الدقة وتوليد الإطارات غير محددة لهذا الرسم."
+      },
+      "charts": [null, "Spider.png", "Spider.png"],
+      "systems": [
+        {
+          "cpu": null,
+          "gpu": "5070ti",
+          "fps": [null, [124, 77], [80, 42]]
+        },
+        {
+          "cpu": null,
+          "gpu": "9070",
+          "fps": [null, [119, 72], [72, 39]]
+        },
+        {
+          "cpu": null,
+          "gpu": "5070",
+          "fps": [null, [97, 55], [61, 32]]
+        },
+        {
+          "cpu": null,
+          "gpu": "7900gre",
+          "fps": [null, [93, 51], [59, 31]]
+        },
+        {
+          "cpu": null,
+          "gpu": "5060ti16",
+          "fps": [null, [79, 42], [45, 24]]
+        },
+        {
+          "cpu": null,
+          "gpu": "9060xt",
+          "fps": [null, [79, 42], [46, 25]]
+        }
+      ]
+    },
+    {
+      "id": "gre-forza-6",
+      "sourceId": "gre-2026",
+      "gameId": "forza-horizon-6",
+      "preset": "Extreme",
+      "kinds": ["gpu"],
+      "rendering": {
+        "en": "Main quality-preset chart, separate from the review’s ray tracing section. Render scale, upscaling and frame generation are not specified for this chart.",
+        "ar": "رسم إعداد الجودة الأساسي، منفصل عن قسم تتبع الأشعة بالمراجعة. مقياس الرندر ورفع الدقة وتوليد الإطارات غير محددة لهذا الرسم."
+      },
+      "charts": [null, "FH6.png", "FH6.png"],
+      "systems": [
+        {
+          "cpu": null,
+          "gpu": "5070ti",
+          "fps": [null, [132, 113], [99, 86]]
+        },
+        {
+          "cpu": null,
+          "gpu": "9070",
+          "fps": [null, [113, 97], [83, 72]]
+        },
+        {
+          "cpu": null,
+          "gpu": "5070",
+          "fps": [null, [110, 91], [78, 67]]
+        },
+        {
+          "cpu": null,
+          "gpu": "7900gre",
+          "fps": [null, [103, 87], [75, 65]]
+        },
+        {
+          "cpu": null,
+          "gpu": "5060ti16",
+          "fps": [null, [86, 73], [59, 50]]
+        },
+        {
+          "cpu": null,
+          "gpu": "9060xt",
+          "fps": [null, [86, 73], [60, 53]]
+        }
+      ]
+    },
+    {
+      "id": "super-alan-wake-2",
+      "sourceId": "super-2024",
+      "gameId": "alan-wake-2",
+      "preset": "High",
+      "kinds": ["gpu"],
+      "rendering": {
+        "en": "Rasterization test at the named preset. The review explicitly excludes upscaling and frame generation from these benchmarks.",
+        "ar": "اختبار الرندر التقليدي بإعداد الجودة المذكور. المراجعة تستبعد صراحة رفع الدقة وتوليد الإطارات من هذه الاختبارات."
+      },
+      "charts": [null, "AW2-1440p.png", "AW2-2160p.png"],
+      "systems": [
+        {
+          "cpu": "7800x3d",
+          "gpu": "4080",
+          "fps": [null, [89, 78], [49, 42]]
+        },
+        {
+          "cpu": "7800x3d",
+          "gpu": "4070super",
+          "fps": [null, [67, 57], [36, 29]]
+        },
+        {
+          "cpu": "7800x3d",
+          "gpu": "7800xt",
+          "fps": [null, [61, 53], [33, 28]]
+        },
+        {
+          "cpu": "7800x3d",
+          "gpu": "3070",
+          "fps": [null, [43, 31], [19, 11]]
+        },
+        {
+          "cpu": "7800x3d",
+          "gpu": "2070super",
+          "fps": [null, [31, 25], [14, 9]]
+        },
+        {
+          "cpu": "7800x3d",
+          "gpu": "2060super",
+          "fps": [null, [25, 20], [14, 9]]
+        }
+      ]
+    },
+    {
+      "id": "super-hogwarts",
+      "sourceId": "super-2024",
+      "gameId": "hogwarts",
+      "preset": "Ultra",
+      "kinds": ["gpu"],
+      "rendering": {
+        "en": "Rasterization test at the named preset. The review explicitly excludes upscaling and frame generation from these benchmarks.",
+        "ar": "اختبار الرندر التقليدي بإعداد الجودة المذكور. المراجعة تستبعد صراحة رفع الدقة وتوليد الإطارات من هذه الاختبارات."
+      },
+      "charts": [null, "Hogwarts-1440p.png", "Hogwarts-2160p.png"],
+      "systems": [
+        {
+          "cpu": "7800x3d",
+          "gpu": "4080",
+          "fps": [null, [116, 71], [72, 50]]
+        },
+        {
+          "cpu": "7800x3d",
+          "gpu": "4070super",
+          "fps": [null, [91, 61], [47, 36]]
+        },
+        {
+          "cpu": "7800x3d",
+          "gpu": "7800xt",
+          "fps": [null, [88, 66], [51, 40]]
+        },
+        {
+          "cpu": "7800x3d",
+          "gpu": "3070",
+          "fps": [null, [66, 45], [42, 31]]
+        },
+        {
+          "cpu": "7800x3d",
+          "gpu": "2070super",
+          "fps": [null, [53, 40], [26, 20]]
+        },
+        {
+          "cpu": "7800x3d",
+          "gpu": "2060super",
+          "fps": [null, [43, 36], [25, 19]]
+        }
+      ]
+    },
+    {
+      "id": "super-starfield",
+      "sourceId": "super-2024",
+      "gameId": "starfield",
+      "preset": "Ultra",
+      "kinds": ["gpu"],
+      "rendering": {
+        "en": "Rasterization test at the named preset. The review explicitly excludes upscaling and frame generation from these benchmarks.",
+        "ar": "اختبار الرندر التقليدي بإعداد الجودة المذكور. المراجعة تستبعد صراحة رفع الدقة وتوليد الإطارات من هذه الاختبارات."
+      },
+      "charts": [null, "Starfield-1440p.png", "Starfield-2160p.png"],
+      "systems": [
+        {
+          "cpu": "7800x3d",
+          "gpu": "4080",
+          "fps": [null, [86, 77], [58, 50]]
+        },
+        {
+          "cpu": "7800x3d",
+          "gpu": "4070super",
+          "fps": [null, [67, 59], [44, 38]]
+        },
+        {
+          "cpu": "7800x3d",
+          "gpu": "7800xt",
+          "fps": [null, [61, 54], [40, 33]]
+        },
+        {
+          "cpu": "7800x3d",
+          "gpu": "3070",
+          "fps": [null, [44, 36], [28, 22]]
+        },
+        {
+          "cpu": "7800x3d",
+          "gpu": "2070super",
+          "fps": [null, [29, 21], [19, 15]]
+        },
+        {
+          "cpu": "7800x3d",
+          "gpu": "2060super",
+          "fps": [null, [25, 19], [16, 11]]
+        }
+      ]
+    },
+    {
+      "id": "super-last-of-us",
+      "sourceId": "super-2024",
+      "gameId": "last-of-us-1",
+      "preset": "Ultra",
+      "kinds": ["gpu"],
+      "rendering": {
+        "en": "Rasterization test at the named preset. The review explicitly excludes upscaling and frame generation from these benchmarks.",
+        "ar": "اختبار الرندر التقليدي بإعداد الجودة المذكور. المراجعة تستبعد صراحة رفع الدقة وتوليد الإطارات من هذه الاختبارات."
+      },
+      "charts": [null, "TLOU-1440p.png", "TLOU-2160p.png"],
+      "systems": [
+        {
+          "cpu": "7800x3d",
+          "gpu": "4080",
+          "fps": [null, [109, 98], [62, 52]]
+        },
+        {
+          "cpu": "7800x3d",
+          "gpu": "4070super",
+          "fps": [null, [86, 77], [46, 35]]
+        },
+        {
+          "cpu": "7800x3d",
+          "gpu": "7800xt",
+          "fps": [null, [81, 70], [44, 34]]
+        },
+        {
+          "cpu": "7800x3d",
+          "gpu": "3070",
+          "fps": [null, [51, 37], [18, 9]]
+        },
+        {
+          "cpu": "7800x3d",
+          "gpu": "2070super",
+          "fps": [null, [46, 33], [15, 7]]
+        },
+        {
+          "cpu": "7800x3d",
+          "gpu": "2060super",
+          "fps": [null, [30, 22], [14, 6]]
+        }
+      ]
+    },
+    {
+      "id": "rdr-2019-gpu",
+      "sourceId": "rdr-2019",
+      "gameId": "red-dead-2",
+      "preset": "High / DX12",
+      "kinds": ["gpu"],
+      "rendering": {
+        "en": "DirectX 12; graphics options manually set to High so settings remain consistent across GPUs. This is the 2019 launch-era test.",
+        "ar": "DirectX 12؛ خيارات الرسومات مضبوطة يدويًا على High لتوحيد الإعدادات بين الكروت. هذا اختبار فترة الإطلاق في 2019."
+      },
+      "charts": ["2019-11-06-image.png", "2019-11-06-image-2.png", "2019-11-06-image-3.png"],
+      "systems": [
+        {
+          "cpu": "9900k",
+          "gpu": "2080ti",
+          "fps": [
+            [114, 101],
+            [92, 79],
+            [57, 52]
+          ]
+        },
+        {
+          "cpu": "9900k",
+          "gpu": "2080super",
+          "fps": [
+            [100, 89],
+            [81, 70],
+            [50, 46]
+          ]
+        },
+        {
+          "cpu": "9900k",
+          "gpu": "2080",
+          "fps": [
+            [95, 84],
+            [77, 66],
+            [47, 43]
+          ]
+        },
+        {
+          "cpu": "9900k",
+          "gpu": "2070super",
+          "fps": [
+            [86, 77],
+            [69, 61],
+            [44, 40]
+          ]
+        },
+        {
+          "cpu": "9900k",
+          "gpu": "2070",
+          "fps": [
+            [78, 66],
+            [62, 54],
+            [39, 35]
+          ]
+        },
+        {
+          "cpu": "9900k",
+          "gpu": "2060super",
+          "fps": [
+            [78, 65],
+            [61, 52],
+            [37, 33]
+          ]
+        },
+        {
+          "cpu": "9900k",
+          "gpu": "2060",
+          "fps": [
+            [72, 60],
+            [56, 49],
+            [35, 30]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "legacy-hogwarts",
+      "sourceId": "legacy-cpu",
+      "gameId": "hogwarts",
+      "preset": "Ultra / RT Ultra",
+      "kinds": ["cpu"],
+      "rendering": {
+        "en": "Ultra graphics and Ultra ray tracing. Upscaling and frame generation are not specified. This CPU review uses different settings from the GPU review.",
+        "ar": "رسومات Ultra وتتبع أشعة Ultra. رفع الدقة وتوليد الإطارات غير محددين. إعدادات مراجعة المعالجات مختلفة عن مراجعة كروت الشاشة."
+      },
+      "charts": ["Hogwarts.png", "Hogwarts.png", "Hogwarts.png"],
+      "systems": [
+        {
+          "cpu": "5800x3d",
+          "gpu": "4090",
+          "fps": [
+            [60, 36],
+            [56, 34],
+            [55, 29]
+          ]
+        },
+        {
+          "cpu": "9900k",
+          "gpu": "4090",
+          "fps": [
+            [46, 30],
+            [45, 28],
+            [45, 23]
+          ]
+        },
+        {
+          "cpu": "3700x",
+          "gpu": "4090",
+          "fps": [
+            [40, 26],
+            [40, 26],
+            [39, 22]
+          ]
+        },
+        {
+          "cpu": "3600",
+          "gpu": "4090",
+          "fps": [
+            [38, 24],
+            [38, 24],
+            [38, 22]
+          ]
+        },
+        {
+          "cpu": "9600k",
+          "gpu": "4090",
+          "fps": [
+            [39, 22],
+            [39, 21],
+            [38, 20]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "legacy-starfield",
+      "sourceId": "legacy-cpu",
+      "gameId": "starfield",
+      "preset": "Ultra",
+      "kinds": ["cpu"],
+      "rendering": {
+        "en": "Ultra. Data predates the performance update mentioned in the November 2023 review. Upscaling and frame generation are not specified.",
+        "ar": "Ultra. القياسات تسبق تحديث الأداء المذكور في مراجعة نوفمبر 2023. رفع الدقة وتوليد الإطارات غير محددين."
+      },
+      "charts": ["Starfield.png", "Starfield.png", "Starfield.png"],
+      "systems": [
+        {
+          "cpu": "5800x3d",
+          "gpu": "4090",
+          "fps": [
+            [69, 58],
+            [69, 57],
+            [68, 55]
+          ]
+        },
+        {
+          "cpu": "9900k",
+          "gpu": "4090",
+          "fps": [
+            [61, 53],
+            [61, 53],
+            [60, 52]
+          ]
+        },
+        {
+          "cpu": "3700x",
+          "gpu": "4090",
+          "fps": [
+            [53, 47],
+            [53, 47],
+            [52, 43]
+          ]
+        },
+        {
+          "cpu": "3600",
+          "gpu": "4090",
+          "fps": [
+            [50, 43],
+            [50, 43],
+            [50, 42]
+          ]
+        },
+        {
+          "cpu": "9600k",
+          "gpu": "4090",
+          "fps": [
+            [50, 42],
+            [50, 42],
+            [49, 40]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "legacy-last-of-us",
+      "sourceId": "legacy-cpu",
+      "gameId": "last-of-us-1",
+      "preset": "Ultra",
+      "kinds": ["cpu"],
+      "rendering": {
+        "en": "Ultra quality. Upscaling and frame generation are not specified. Historical November 2023 review.",
+        "ar": "إعداد Ultra. رفع الدقة وتوليد الإطارات غير محددين. مراجعة تاريخية من نوفمبر 2023."
+      },
+      "charts": ["TLOU.png", "TLOU.png", "TLOU.png"],
+      "systems": [
+        {
+          "cpu": "5800x3d",
+          "gpu": "4090",
+          "fps": [
+            [139, 116],
+            [134, 114],
+            [85, 75]
+          ]
+        },
+        {
+          "cpu": "9900k",
+          "gpu": "4090",
+          "fps": [
+            [114, 97],
+            [108, 91],
+            [81, 74]
+          ]
+        },
+        {
+          "cpu": "3700x",
+          "gpu": "4090",
+          "fps": [
+            [99, 86],
+            [99, 86],
+            [81, 74]
+          ]
+        },
+        {
+          "cpu": "3600",
+          "gpu": "4090",
+          "fps": [
+            [91, 71],
+            [91, 71],
+            [81, 70]
+          ]
+        },
+        {
+          "cpu": "9600k",
+          "gpu": "4090",
+          "fps": [
+            [79, 46],
+            [78, 44],
+            [78, 44]
+          ]
+        }
+      ]
+    }
+  ]
+}

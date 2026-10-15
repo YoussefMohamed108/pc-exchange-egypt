@@ -1,0 +1,15 @@
+.env*
+.venv/
+.artifacts/
+/infrastructure/
+/services/
+/supabase/
+/tests/
+/scripts/
+/docs/
+/.github/
+*.md
+coverage/
+playwright-report/
+test-results/
+Dockerfile
