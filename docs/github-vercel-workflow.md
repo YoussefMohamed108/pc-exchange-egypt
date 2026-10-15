@@ -31,6 +31,8 @@ The owner can inspect settings at [GitHub branch protection](https://github.com/
 
 ## References
 
+Setup acceptance is recorded in [PR #1](https://github.com/YoussefMohamed108/pc-exchange-egypt/pull/1) and [project progress](../PROJECT_PROGRESS.md): automatic preview creation, full CI, authenticated preview isolation/layout checks and successful production redeployment with both required checks. The setup PR stays open until a collaborator can independently review it.
+
 - [GitHub protected branches](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches)
 - [Vercel GitHub integration](https://vercel.com/docs/git/vercel-for-github)
 - [Vercel deployment checks](https://vercel.com/docs/deployment-checks)
