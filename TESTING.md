@@ -92,7 +92,7 @@ CI uses installed Chromium instead of Edge. `scripts/preview-screenshots.mjs` ca
 
 ## Live acceptance still required
 
-- External SMTP delivery, recovery, cross-device confirmation and long-lived session refresh. Basic local signup, confirmation, login and logout have passed.
+- End-to-end password change through recovery, cross-device confirmation and long-lived session refresh remain unverified. Branded confirmation/recovery delivery and recovery-form navigation passed on 16 October.
 - Inventory create/edit/publish and decoded photo storage through authenticated SDK calls.
 - Anonymous catalog/report reads through PostgREST; denied drafts/private data/role writes with actual JWTs.
 - Two concurrent real database connections attempting the same final stock unit; exactly one order must reserve it.
