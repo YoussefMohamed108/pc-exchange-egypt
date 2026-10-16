@@ -244,8 +244,8 @@ export function ListingForm({
         <p>
           {text(
             locale,
-            "Add at least one real photo to publish. Up to 8 photos, 3 MB each.",
-            "أضف صورة حقيقية واحدة على الأقل للنشر. حتى 8 صور، 3 ميجابايت لكل صورة.",
+            "Add at least one real photo to submit for review. Up to 8 photos, 3 MB each.",
+            "أضف صورة حقيقية واحدة على الأقل لإرسال الإعلان للمراجعة. حتى 8 صور، 3 ميجابايت لكل صورة.",
           )}
         </p>
         <div className="seller-photos">
@@ -305,9 +305,15 @@ export function ListingForm({
       </fieldset>
       <div className="field">
         <label htmlFor="status">{text(locale, "Listing status", "حالة الإعلان")}</label>
-        <Select id="status" name="status" defaultValue={listing?.status || "listed"}>
+        <Select
+          id="status"
+          name="status"
+          defaultValue={
+            listing?.status === "pending_review" ? "listed" : listing?.status || "listed"
+          }
+        >
           {[
-            ["listed", "Publish now", "انشر الآن"],
+            ["listed", "Submit for review", "إرسال للمراجعة"],
             ["draft", "Save draft", "حفظ مسودة"],
             ["paused", "Paused", "متوقف مؤقتًا"],
             ["sold", "Sold", "تم البيع"],
@@ -322,8 +328,8 @@ export function ListingForm({
       <p>
         {text(
           locale,
-          "Your listing can go live immediately. The Benchmark reviewed watermark is added only after an admin approves your optional PDF evidence.",
-          "تقدر تنشر إعلانك مباشرة. علامة تمت مراجعة الاختبارات تظهر فقط بعد موافقة الأدمن على ملف الأدلة الاختياري.",
+          "Listings stay private until an admin approves publication. Changes to hardware, descriptions, condition, defects or photos require a new review; price-only edits preserve approval. Benchmark review and physical inspection are separate decisions.",
+          "يبقى الإعلان خاصًا حتى موافقة الإدارة على النشر. تغيير المكونات أو الوصف أو الحالة أو العيوب أو الصور يتطلب مراجعة جديدة؛ تغيير السعر فقط يحافظ على الموافقة. مراجعة الاختبارات والفحص الميداني قراران منفصلان.",
         )}
       </p>
       <Button disabled={pending || uploading}>

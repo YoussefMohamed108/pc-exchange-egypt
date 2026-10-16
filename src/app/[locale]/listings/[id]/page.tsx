@@ -1,3 +1,4 @@
+import { publicPageMetadata } from "@/lib/site-metadata";
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
@@ -11,7 +12,34 @@ import { formatMoney } from "@/lib/money";
 import { Button } from "@/components/ui/button";
 import { BenchmarkHistory } from "@/components/benchmark-history";
 import { specificationLabel } from "@/lib/hardware-specifications";
-export const metadata = { title: "Seller listing" };
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string; id: string }>;
+}) {
+  const { locale, id } = await params;
+  if (!isLocale(locale)) notFound();
+  const listing = await getSellerListing(id);
+  if (
+    !listing ||
+    listing.status !== "listed" ||
+    listing.review_status !== "approved" ||
+    listing.reviewed_revision !== listing.revision ||
+    listing.hidden ||
+    listing.deleted_at
+  ) {
+    return {
+      title: locale === "ar" ? "الإعلان غير متاح" : "Listing unavailable",
+      robots: { index: false, follow: false },
+    };
+  }
+  return publicPageMetadata(
+    locale,
+    `/listings/${encodeURIComponent(id)}`,
+    listing.title,
+    listing.description.slice(0, 160),
+  );
+}
 export default async function ListingPage({
   params,
 }: {
@@ -20,7 +48,15 @@ export default async function ListingPage({
   const { locale, id } = await params;
   if (!isLocale(locale)) notFound();
   const l = await getSellerListing(id);
-  if (!l || l.status !== "listed" || l.hidden || l.deleted_at) notFound();
+  if (
+    !l ||
+    l.status !== "listed" ||
+    l.review_status !== "approved" ||
+    l.reviewed_revision !== l.revision ||
+    l.hidden ||
+    l.deleted_at
+  )
+    notFound();
   const a = await getAccount();
   const ar = locale === "ar",
     t = dictionary(locale);

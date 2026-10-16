@@ -1,3 +1,4 @@
+import { publicPageMetadata } from "@/lib/site-metadata";
 import Image from "next/image";
 import Link from "next/link";
 import { specificationLabel } from "@/lib/hardware-specifications";
@@ -13,14 +14,19 @@ import { AddToCart } from "@/components/add-to-cart";
 type Props = { params: Promise<{ locale: string; slug: string }> };
 export async function generateMetadata({ params }: Props) {
   const { slug, locale } = await params;
+  if (!isLocale(locale)) notFound();
   const p = await getProduct(slug);
   return p
     ? {
         title: locale === "ar" && p.title_ar ? p.title_ar : p.title,
         description: p.description.slice(0, 160),
-        alternates: { canonical: `${siteUrl()}/${locale}/products/${slug}` },
+        ...publicPageMetadata(
+          locale,
+          `/products/${encodeURIComponent(slug)}`,
+          locale === "ar" && p.title_ar ? p.title_ar : p.title,
+        ),
       }
-    : { title: "Hardware unavailable" };
+    : { title: "Hardware unavailable", robots: { index: false, follow: false } };
 }
 export default async function ProductPage({ params }: Props) {
   const { locale, slug } = await params;

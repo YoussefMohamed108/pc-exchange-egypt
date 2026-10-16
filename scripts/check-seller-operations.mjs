@@ -1,5 +1,6 @@
 /* global document, window */
 import assert from "node:assert/strict";
+import { approveDisposableListing } from "./approve-disposable-listing.mjs";
 import { expect } from "@playwright/test";
 
 // Only the disposable fixture created by check-marketplace is changed.
@@ -13,6 +14,7 @@ export async function checkSellerOperations({ base, lid, sid, seller, buyer, adm
     assert.equal(result.error, null);
     return result.data;
   };
+  await approveDisposableListing(admin, lid);
   const original = await current();
   const visible = async (expected) => {
     const result = await anon.from("marketplace_catalog").select("id").eq("id", lid);
@@ -84,6 +86,8 @@ export async function checkSellerOperations({ base, lid, sid, seller, buyer, adm
   await seller.page.locator('[name="status"]').selectOption("listed");
   await seller.page.getByRole("button", { name: "Save listing", exact: true }).click();
   await expect(seller.page).toHaveURL(/saved=1/);
+  await approveDisposableListing(admin, lid);
+  await seller.page.reload();
   await visible(true);
   assert.equal((await current()).revision, original.revision);
   assert.equal((await current()).reference_code, original.reference_code);
@@ -123,6 +127,7 @@ export async function checkSellerOperations({ base, lid, sid, seller, buyer, adm
   );
   await moderate("restore");
   await moderate("resume");
+  await approveDisposableListing(admin, lid);
 
   await seller.page.setViewportSize({ width: 390, height: 844 });
   await seller.page.goto(`${base}/ar/account/listings/${lid}`);

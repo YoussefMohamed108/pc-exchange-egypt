@@ -39,7 +39,7 @@ export function SellerListingControls({
               ? "متوقف بواسطة الإدارة — تواصل مع الفريق لاستئنافه"
               : "Paused by admin — contact the team to resume"
             : `${sellerStatusLabel(listing.status, locale)} · ${
-                listing.status === "listed"
+                listing.status === "listed" && listing.review_status === "approved"
                   ? ar
                     ? "ظاهر للمشترين"
                     : "Visible to buyers"

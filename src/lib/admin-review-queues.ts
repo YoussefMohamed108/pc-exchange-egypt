@@ -23,6 +23,7 @@ export type QueueItem<T> = {
     | "hidden"
     | "deleted_at"
     | "seller_id"
+    | "review_status"
   >;
   applicant: { display_name: string; governorate: string; phone: string; social_url: string };
   is_latest: boolean;

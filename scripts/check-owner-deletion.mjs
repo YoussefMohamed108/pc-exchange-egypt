@@ -46,7 +46,12 @@ export async function checkOwnerDeletion({
     (await admin.client.from("marketplace_listings").select("id").eq("id", lid)).data.length,
     0,
   );
-  for (const table of ["benchmark_submissions", "inspection_requests", "field_inspections"])
+  for (const table of [
+    "benchmark_submissions",
+    "inspection_requests",
+    "field_inspections",
+    "listing_review_history",
+  ])
     assert.equal(
       (await admin.client.from(table).select("id").eq("listing_id", lid)).data.length,
       0,

@@ -10,6 +10,7 @@ import { chromium, expect } from "@playwright/test";
 import { createClient } from "@supabase/supabase-js";
 import { checkProductOperations } from "./check-product-operations.mjs";
 import { checkSellerOperations } from "./check-seller-operations.mjs";
+import { approveDisposableListing } from "./approve-disposable-listing.mjs";
 import { checkOwnerDeletion } from "./check-owner-deletion.mjs";
 
 // Disposable acceptance fixture, with no external email. All cleanup is restricted to its IDs.
@@ -161,6 +162,30 @@ print(r.json()['id'])`,
     timeout: 20000,
   });
   lid = (await seller.page.url()).match(/listings\/([a-f0-9-]{36})/)[1];
+  const submitted = await seller.client
+    .from("marketplace_listings")
+    .select("status,review_status")
+    .eq("id", lid)
+    .single();
+  assert.equal(submitted.error, null);
+  assert.equal(submitted.data.status, "pending_review");
+  assert.equal(submitted.data.review_status, "pending");
+  assert.equal((await anon.from("marketplace_catalog").select("id").eq("id", lid)).data.length, 0);
+  assert.ok(
+    (
+      await buyer.client.rpc("review_listing", {
+        lid,
+        expected_updated_at: new Date().toISOString(),
+        decision: "approved",
+        note: "",
+      })
+    ).error,
+  );
+  await expect(seller.page.locator('[name="status"] option[value="listed"]')).toHaveText(
+    "Submit for review",
+  );
+  await approveDisposableListing(admin, lid);
+  await seller.page.reload();
   if (laptop) {
     await expect(seller.page.locator('[name="category_slug"]')).toHaveValue("laptops");
     await expect(seller.page.locator('input[id="spec-Battery condition"]')).toHaveValue(
@@ -180,7 +205,7 @@ print(r.json()['id'])`,
     );
   }
   console.log(
-    "PASS confirmed seller sets contacts, uploads a normalized photo and publishes without admin approval",
+    "PASS confirmed seller sets contacts, uploads a normalized photo and submits privately; only explicit admin approval permits publication",
   );
   if (process.argv.includes("--seller-only")) {
     await checkSellerOperations({ base, lid, seller, buyer, admin, anon });
@@ -429,6 +454,22 @@ out=io.BytesIO();image.save(out,format='PDF');print(base64.b64encode(out.getvalu
         .fill("TEST: revised hardware description");
     await seller.page.getByRole("button", { name: "Save listing" }).click();
     await expect(seller.page).toHaveURL(/saved=1/);
+    const changed = await seller.client
+      .from("marketplace_listings")
+      .select("status,review_status")
+      .eq("id", lid)
+      .single();
+    assert.equal(changed.data.status, "pending_review");
+    assert.equal(changed.data.review_status, "pending");
+    assert.equal(
+      (await anon.from("marketplace_catalog").select("id").eq("id", lid)).data.length,
+      0,
+    );
+    assert.equal(
+      (await buyer.client.from("benchmark_submissions").select("id").eq("id", sid)).data.length,
+      0,
+    );
+    await approveDisposableListing(admin, lid);
     assert.equal(
       (await anon.from("marketplace_catalog").select("benchmark_status").eq("id", lid).single())
         .data.benchmark_status,
@@ -487,7 +528,12 @@ out=io.BytesIO();image.save(out,format='PDF');print(base64.b64encode(out.getvalu
         (await admin.client.from("marketplace_listings").select("id").eq("id", lid)).data.length,
         0,
       );
-      for (const table of ["benchmark_submissions", "inspection_requests", "field_inspections"])
+      for (const table of [
+        "benchmark_submissions",
+        "inspection_requests",
+        "field_inspections",
+        "listing_review_history",
+      ])
         assert.equal(
           (await admin.client.from(table).select("id").eq("listing_id", lid)).data.length,
           0,

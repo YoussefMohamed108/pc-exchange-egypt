@@ -1,7 +1,7 @@
 import os
 import io
 import unittest
-from unittest.mock import patch
+from unittest.mock import patch, AsyncMock, MagicMock
 from fastapi.testclient import TestClient
 from app.main import app
 
@@ -37,6 +37,32 @@ class ApiBoundaryTests(unittest.TestCase):
 
 
 class EvidenceBoundaryTests(unittest.TestCase):
+    @patch.dict(os.environ, {"SUPABASE_SERVICE_ROLE_KEY": "isolated-test-secret"})
+    def test_accepts_owned_unpublished_revision_and_cleans_up_failed_commit(self):
+        import httpx
+        from app.evidence import attempts
+        uid = "10000000-0000-4000-8000-000000000002"
+        lid = "10000000-0000-4000-8000-000000000001"
+        for commit_status in (200, 409):
+            attempts.clear()
+            upstream = AsyncMock()
+            upstream.get.side_effect = [
+                httpx.Response(200, json={"id": uid, "email_confirmed_at": "2026-10-16T00:00:00Z"}),
+                httpx.Response(200, json=[{"revision": 3}]),
+            ]
+            upstream.post.side_effect = [httpx.Response(201), httpx.Response(commit_status, json=lid)]
+            context = MagicMock()
+            context.__aenter__ = AsyncMock(return_value=upstream)
+            context.__aexit__ = AsyncMock(return_value=False)
+            with patch("app.evidence.httpx.AsyncClient", return_value=context), patch("app.evidence.process_pdf", return_value=(b"clean-pdf", 1)):
+                response = client.post(f"/evidence/v1/submit/{lid}?revision=3", content=b"%PDF-test", headers={"Content-Type":"application/pdf", "Authorization":"Bearer isolated-token"})
+            self.assertEqual(response.status_code, commit_status)
+            params = upstream.get.call_args_list[1].kwargs["params"]
+            self.assertEqual(params["status"], "in.(listed,draft,pending_review,paused)")
+            self.assertEqual(params["deleted_at"], "is.null")
+            self.assertEqual(params["seller_id"], f"eq.{uid}")
+            self.assertEqual(upstream.request.await_count, int(commit_status == 409))
+
     def test_requires_a_session(self):
         response = client.post("/evidence/v1/submit/10000000-0000-4000-8000-000000000001?revision=1", content=b"%PDF-test", headers={"Content-Type":"application/pdf"})
         self.assertEqual(response.status_code, 401)

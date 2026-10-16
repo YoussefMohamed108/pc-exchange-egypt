@@ -1,3 +1,4 @@
+import { publicPageMetadata } from "@/lib/site-metadata";
 import { notFound } from "next/navigation";
 import { isLocale } from "@/lib/domain";
 import { BenchmarkExplorer } from "@/components/benchmark-explorer";
@@ -6,11 +7,12 @@ import "./gaming.css";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
-  return {
-    title: locale === "ar" ? "مكتبة اختبارات الأداء" : "Hardware benchmark library",
-    description:
-      "Compare sourced GPU and CPU gaming FPS at 1080p, 1440p and 4K, plus rendering and SSD measurements.",
-  };
+  if (!isLocale(locale)) notFound();
+  return publicPageMetadata(
+    locale,
+    "/benchmarks",
+    locale === "ar" ? "مكتبة اختبارات الأداء" : "Hardware benchmark library",
+  );
 }
 export default async function Benchmarks({
   params,

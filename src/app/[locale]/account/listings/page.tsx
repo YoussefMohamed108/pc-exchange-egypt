@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 import { EmptyState } from "@/components/ui/empty-state";
 import { SellerListingControls } from "@/components/seller-listing-controls";
 import { DeletedFileCleanup } from "@/components/permanent-delete-form";
-import { sellerStatusLabel } from "@/lib/listing-status";
+import { listingReviewLabel, sellerStatusLabel } from "@/lib/listing-status";
 export const metadata = { title: "My listings", robots: { index: false, follow: false } };
 export default async function Listings({
   params,
@@ -102,6 +102,8 @@ export default async function Listings({
                   <Link href={`/${locale}/account/listings/${l.id}`}>{l.title}</Link>
                 </h2>
                 <p className="product-reference">{l.reference_code}</p>
+                <p>{listingReviewLabel(l.review_status, locale)}</p>
+                {l.review_note && <p>{l.review_note}</p>}
                 <p>{formatMoney(l.price_piastres, locale)}</p>
               </div>
               <div className="seller-row-actions">

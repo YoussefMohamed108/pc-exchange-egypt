@@ -1,3 +1,4 @@
+import { publicPageMetadata } from "@/lib/site-metadata";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { SlidersHorizontal } from "lucide-react";
@@ -9,7 +10,16 @@ import { ProductCard } from "@/components/product-card";
 import { EmptyState } from "@/components/ui/empty-state";
 import { Input, Select } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-export const metadata = { title: "Hardware catalog" };
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  if (!isLocale(locale)) notFound();
+  return publicPageMetadata(
+    locale,
+    "/catalog",
+    locale === "ar" ? "كتالوج الأجهزة" : "Hardware catalog",
+  );
+}
 export default async function Catalog({
   params,
   searchParams,

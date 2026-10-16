@@ -36,6 +36,10 @@ export default async function AdminLayout({
               <ShoppingBag size={16} />
               {t.orderQueue}
             </Link>
+            <Link href={`/${locale}/admin/listings`}>
+              <ScanLine size={16} />
+              {locale === "ar" ? "مراجعة الإعلانات" : "Listing reviews"}
+            </Link>
             <Link href={`/${locale}/admin/benchmarks`}>
               <ScanLine size={16} />
               {locale === "ar" ? "مراجعة الاختبارات" : "Benchmark reviews"}

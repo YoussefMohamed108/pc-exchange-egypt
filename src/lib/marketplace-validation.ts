@@ -56,15 +56,22 @@ export const listingSchema = z
   )
   .refine(
     (v) => v.status !== "listed" || v.image_paths.length > 0,
-    "Add a photo before publishing.",
+    "Add a photo before submitting for review.",
   );
 
 export type ContactProfile = z.output<typeof contactSchema> & { user_id: string };
 export type SellerListing = Omit<
   z.output<typeof listingSchema>,
-  "id" | "price" | "expected_updated_at"
+  "id" | "price" | "expected_updated_at" | "status"
 > & {
   id: string;
+  status: z.output<typeof listingSchema>["status"] | "pending_review";
+  review_status: "draft" | "pending" | "approved" | "changes_requested" | "rejected";
+  review_note: string;
+  reviewed_revision: number | null;
+  reviewer_id: string | null;
+  reviewed_at: string | null;
+  review_submitted_at: string | null;
   seller_id: string;
   reference_code: string;
   deleted_at: string | null;
@@ -102,3 +109,26 @@ export function isBenchmarkReviewed(b: Benchmark | undefined, revision: number) 
     Date.parse(b.expires_at) > Date.now()
   );
 }
+
+export type ListingReviewHistory = {
+  id: string;
+  listing_id: string;
+  revision: number;
+  decision: "approved" | "changes_requested" | "rejected";
+  note: string;
+  reviewer_id: string;
+  reviewed_at: string;
+};
+export const listingReviewSchema = z
+  .object({
+    lid: z.uuid(),
+    expected_updated_at: z.iso.datetime({ offset: true }),
+    decision: z.enum(["approved", "changes_requested", "rejected"]),
+    note: z.string().trim().max(2000),
+  })
+  .strict()
+  .refine(
+    (v) =>
+      v.decision === "approved" ? v.note.length === 0 || v.note.length >= 5 : v.note.length >= 5,
+    { message: "A refusal or changes request needs a reason of at least 5 characters." },
+  );

@@ -1,5 +1,10 @@
 import type { Product, InspectionReport, Order, Role, InventoryRow } from "./domain";
-import type { ContactProfile, SellerListing, Benchmark } from "./marketplace-validation";
+import type {
+  ContactProfile,
+  SellerListing,
+  Benchmark,
+  ListingReviewHistory,
+} from "./marketplace-validation";
 import type { FieldReport, InspectionRequest } from "./inspections";
 export type Json = string | number | boolean | null | { [key: string]: Json | undefined } | Json[];
 type Table<Row> = { Row: Row; Insert: Partial<Row>; Update: Partial<Row>; Relationships: [] };
@@ -10,6 +15,7 @@ export type Database = {
       account_roles: Table<{ user_id: string; role: Role }>;
       profile_contacts: Table<ContactProfile>;
       marketplace_listings: Table<SellerListing>;
+      listing_review_history: Table<ListingReviewHistory>;
       benchmark_submissions: Table<Benchmark>;
       inspection_requests: Table<InspectionRequest>;
       field_inspections: Table<FieldReport & { created_at: string; revision: number }>;
@@ -66,6 +72,14 @@ export type Database = {
       };
     };
     Functions: {
+      review_listing: {
+        Args: { lid: string; expected_updated_at: string; decision: string; note: string };
+        Returns: undefined;
+      };
+      admin_listing_review_queue: {
+        Args: { term: string; filter_status: string; page_number: number };
+        Returns: Json;
+      };
       seller_delete_listing: {
         Args: { lid: string; expected_updated_at: string; confirmation: string };
         Returns: string;

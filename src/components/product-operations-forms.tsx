@@ -51,8 +51,12 @@ export function ProductControls({
           <p>
             {status === "draft"
               ? ar
-                ? "المنتج موقوف ومسودة. الاستئناف يعيد نشره إذا اكتملت بياناته وصوره."
-                : "This product is paused and saved as a draft. Resume republishes it when its required details and photos are complete."
+                ? source === "seller"
+                  ? "المنتج موقوف ومسودة. الاستئناف يعيد الإعلان المعتمد أو يرسله لمراجعة النشر إذا لم تُعتمد نسخته الحالية."
+                  : "المنتج موقوف ومسودة. الاستئناف يعيد نشره إذا اكتملت بياناته وصوره."
+                : source === "seller"
+                  ? "This product is a paused draft. Resume restores an approved listing or submits its unapproved current content for publication review."
+                  : "This product is paused and saved as a draft. Resume republishes it when its required details and photos are complete."
               : ar
                 ? "المنتج موقوف بواسطة الإدارة."
                 : "This product is paused by an admin."}
@@ -60,8 +64,12 @@ export function ProductControls({
           <Button variant="secondary" name="quick_operation" value="resume" disabled={pending}>
             {status === "draft"
               ? ar
-                ? "استئناف ونشر المنتج"
-                : "Resume & publish listing"
+                ? source === "seller"
+                  ? "استئناف أو إرسال للمراجعة"
+                  : "استئناف ونشر المنتج"
+                : source === "seller"
+                  ? "Resume / submit for review"
+                  : "Resume & publish listing"
               : ar
                 ? "استئناف العرض"
                 : "Resume listing"}
@@ -88,8 +96,12 @@ export function ProductControls({
               <option value="resume">
                 {status === "draft"
                   ? ar
-                    ? "استئناف ونشر المنتج"
-                    : "Resume & publish listing"
+                    ? source === "seller"
+                      ? "استئناف أو إرسال للمراجعة"
+                      : "استئناف ونشر المنتج"
+                    : source === "seller"
+                      ? "Resume / submit for review"
+                      : "Resume & publish listing"
                   : ar
                     ? "استئناف العرض"
                     : "Resume listing"}

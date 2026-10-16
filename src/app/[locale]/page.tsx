@@ -1,3 +1,4 @@
+import { publicPageMetadata } from "@/lib/site-metadata";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowUpRight, ArrowRight, Plus, Monitor, Keyboard, Computer, Laptop } from "lucide-react";
@@ -9,6 +10,15 @@ import { PcExplorer } from "@/components/pc-explorer";
 import { ProductCard } from "@/components/product-card";
 import styles from "./page.module.css";
 
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  if (!isLocale(locale)) notFound();
+  return publicPageMetadata(
+    locale,
+    "/",
+    locale === "ar" ? "قطع كمبيوتر مستعملة في مصر" : "Used PC hardware in Egypt",
+  );
+}
 export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   if (!isLocale(locale)) notFound();

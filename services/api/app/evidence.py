@@ -57,9 +57,9 @@ async def submit(listing_id: UUID, request: Request, revision: int):
                 if not attempts[old_uid] or attempts[old_uid][-1] < now - 600:
                     del attempts[old_uid]
         owned = await client.get("http://rest:3000/marketplace_listings", headers={"Authorization": token},
-                                 params={"id": f"eq.{listing_id}", "seller_id": f"eq.{uid}", "status": "eq.listed", "hidden": "eq.false", "select": "revision"})
+                                 params={"id": f"eq.{listing_id}", "seller_id": f"eq.{uid}", "status": "in.(listed,draft,pending_review,paused)", "deleted_at": "is.null", "select": "revision"})
         if owned.status_code != 200 or not owned.json() or owned.json()[0]["revision"] != revision:
-            raise HTTPException(403, "Published listing ownership and current revision required")
+            raise HTTPException(403, "Available listing ownership and current revision required")
         body = bytearray()
         async for chunk in request.stream():
             body.extend(chunk)
