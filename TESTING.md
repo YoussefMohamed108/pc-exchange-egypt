@@ -8,7 +8,9 @@ All 49 applicable desktop/mobile browser regressions pass against the local prod
 
 The new migration was applied to the actual PC-hosted database after a private backup. Focused real Auth/REST/Storage/PDF checks pass: pending listing/contact/evidence privacy, confirmed role guards, PCX/UUID queue lookup, required refusal reasons, resubmission, evidence upload before publication, benchmark approval without publication, approved buyer access, price preservation, content invalidation and owner-only review history. Existing marketplace acceptance scripts now explicitly approve disposable listings at public-access boundaries, rather than assuming immediate publication; those script adaptations were statically checked.
 
-Domain, branded mail and final deployed browser acceptance are recorded separately in `PROJECT_PROGRESS.md`. Do not infer actual mail delivery or a completed deployment from unit tests.
+[PR #2 CI run 38943247950](https://github.com/YoussefMohamed108/pc-exchange-egypt/actions/runs/38943247950) passes the complete Linux suites and normal Turbopack build. Main implementation `7e5bed2` deployed as `dpl_AAq2vf9BazRk4UnJYZARqFUjYsge` after both required deployment checks passed. Live CUA verifies product-ID lookup, admin refusal through the deployed server action and the reason shown to its seller. Anonymous private-listing content/metadata checks pass; streaming not-found responses can retain HTTP 200 with noindex, as documented by the installed Next.js guide. All disposable test accounts, records and files were removed.
+
+Live domain checks confirm apex sitemap/canonicals/alternates and path/query-preserving permanent redirects from www and the old Vercel hostname. The protected preview remains isolated from production data. Actual branded confirmation delivery, Auth confirmation, recovery email/new-password-page navigation and support forwarding to Gmail passed. Gmail shows the support message signed by pc-ex.store. The first confirmation landed in Spam and was marked legitimate; Inbox placement is not guaranteed. No password was changed through the reset form. Detailed provider configuration and evidence are recorded in `PROJECT_PROGRESS.md`; local tests alone do not establish these live outcomes.
 
 ## Git integration acceptance — 15 October 2026
 
@@ -90,7 +92,7 @@ CI uses installed Chromium instead of Edge. `scripts/preview-screenshots.mjs` ca
 
 ## Live acceptance still required
 
-- External SMTP delivery, recovery, cross-device confirmation and long-lived session refresh. Basic local signup, confirmation, login and logout have passed.
+- End-to-end password change through recovery, cross-device confirmation and long-lived session refresh remain unverified. Branded confirmation/recovery delivery and recovery-form navigation passed on 16 October.
 - Inventory create/edit/publish and decoded photo storage through authenticated SDK calls.
 - Anonymous catalog/report reads through PostgREST; denied drafts/private data/role writes with actual JWTs.
 - Two concurrent real database connections attempting the same final stock unit; exactly one order must reserve it.
