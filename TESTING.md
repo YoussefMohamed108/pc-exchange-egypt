@@ -1,5 +1,15 @@
 # Testing
 
+## Listing approval acceptance — 16 October 2026
+
+All 97 unit/database/metadata tests pass across 13 suites, including publication authorization, backfill, stale decisions, refusal reasons, revision invalidation and independent benchmark review. All 8 Python API tests pass in the locked-dependency Docker image with current source mounted read-only. TypeScript, ESLint, formatting and repository credential checks pass. The supported webpack production build passes; the local Turbopack PostCSS subprocess exits before connection, so the normal Linux CI build is a separate required check.
+
+All 49 applicable desktop/mobile browser regressions pass against the local production build, with one intentional desktop skip. The installed Edge channel was used because Playwright's separate Chromium binary is absent on this PC. This does not establish remote CI or hosted Supabase acceptance.
+
+The new migration was applied to the actual PC-hosted database after a private backup. Focused real Auth/REST/Storage/PDF checks pass: pending listing/contact/evidence privacy, confirmed role guards, PCX/UUID queue lookup, required refusal reasons, resubmission, evidence upload before publication, benchmark approval without publication, approved buyer access, price preservation, content invalidation and owner-only review history. Existing marketplace acceptance scripts now explicitly approve disposable listings at public-access boundaries, rather than assuming immediate publication; those script adaptations were statically checked.
+
+Domain, branded mail and final deployed browser acceptance are recorded separately in `PROJECT_PROGRESS.md`. Do not infer actual mail delivery or a completed deployment from unit tests.
+
 ## Git integration acceptance — 15 October 2026
 
 [PR #1 CI run 38666753214](https://github.com/YoussefMohamed108/pc-exchange-egypt/actions/runs/38666753214) passes 85 unit/database tests, 49 browser checks (one intentional skip), 7 Python tests and all static/build/repository checks. The three added environment tests preserve an explicit production origin, select Vercel's generated preview origin when unset, and retain localhost for local development.

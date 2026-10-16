@@ -45,6 +45,16 @@ async function createListing(uid = seller) {
     "select public.save_marketplace_listing($1) id",
     [payload],
   );
+  const stamp = (
+    await db.query<{ stamp: string }>(
+      "select updated_at::text stamp from public.marketplace_listings where id=$1",
+      [result.rows[0].id],
+    )
+  ).rows[0].stamp;
+  await asUser(admin, "select public.review_listing($1,$2,'approved','')", [
+    result.rows[0].id,
+    stamp,
+  ]);
   return { id: result.rows[0].id, payload };
 }
 async function submit(lid: string, uid = seller) {
@@ -130,7 +140,7 @@ describe("marketplace boundaries", () => {
       }).success,
     ).toBe(false);
   });
-  it("publishes immediately without a benchmark badge; checkout rejects marketplace IDs", async () => {
+  it("publishes after explicit listing approval without a benchmark badge; checkout rejects marketplace IDs", async () => {
     const { id } = await createListing();
     expect(
       (
@@ -257,6 +267,11 @@ describe("marketplace boundaries", () => {
       [laptop],
     );
     const id = saved.rows[0].id;
+    await asUser(
+      admin,
+      "select review_listing($1,(select updated_at from marketplace_listings where id=$1),'approved','')",
+      [id],
+    );
     expect(
       (
         await asUser(
@@ -292,7 +307,7 @@ describe("marketplace boundaries", () => {
           id,
         ])
       ).rows,
-    ).toEqual([{ benchmark_status: "not_reviewed" }]);
+    ).toHaveLength(0);
     expect(
       (await asUser(buyer, "select id from public.benchmark_submissions where id=$1", [sid])).rows,
     ).toHaveLength(0);
@@ -343,8 +358,8 @@ describe("marketplace boundaries", () => {
         await asUser(null, "select benchmark_status from public.marketplace_catalog where id=$1", [
           id,
         ])
-      ).rows[0].benchmark_status,
-    ).toBe("not_reviewed");
+      ).rows,
+    ).toHaveLength(0);
     expect(
       (await asUser(buyer, "select id from public.benchmark_submissions where id=$1", [sid])).rows,
     ).toHaveLength(0);

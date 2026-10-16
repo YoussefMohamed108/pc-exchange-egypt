@@ -1,8 +1,18 @@
+import { publicPageMetadata } from "@/lib/site-metadata";
 import { notFound } from "next/navigation";
 import { ShieldCheck, ClipboardCheck, ScanLine, FileCheck } from "lucide-react";
 import { isLocale } from "@/lib/domain";
 import { dictionary } from "@/lib/i18n";
-export const metadata = { title: "Hardware verification" };
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  if (!isLocale(locale)) notFound();
+  return publicPageMetadata(
+    locale,
+    "/verification",
+    locale === "ar" ? "فحص الأجهزة" : "Hardware verification",
+  );
+}
 export default async function Verification({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   if (!isLocale(locale)) notFound();

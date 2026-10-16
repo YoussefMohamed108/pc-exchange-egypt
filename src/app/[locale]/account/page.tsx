@@ -59,8 +59,8 @@ export default async function Account({
           <h2>{locale === "ar" ? "اعرض مكوناتك للبيع." : "Pass your hardware on."}</h2>
           <p>
             {locale === "ar"
-              ? "انشر إعلانك مباشرة، وأرسل الاختبارات اختياريًا لمراجعة الأدمن."
-              : "Publish a listing immediately, then optionally submit benchmarks for admin review."}
+              ? "أرسل إعلانك لموافقة الإدارة قبل نشره، وأرسل الاختبارات اختياريًا لمراجعة منفصلة."
+              : "Submit a listing for admin publication approval, with optional benchmarks reviewed separately."}
           </p>
         </div>
         <div className="market-actions">

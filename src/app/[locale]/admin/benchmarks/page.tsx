@@ -61,7 +61,7 @@ export default async function Benchmarks({
           item.is_latest &&
           l.revision === b.revision &&
           !l.deleted_at &&
-          ["listed", "draft", "paused"].includes(l.status) &&
+          ["listed", "draft", "paused", "pending_review"].includes(l.status) &&
           b.seller_id !== account.user!.id;
         const blockedReason =
           b.seller_id === account.user!.id
@@ -119,11 +119,14 @@ export default async function Benchmarks({
               <Link href={`/${locale}/evidence/${b.id}`} target="_blank" rel="noopener">
                 {ar ? "عرض الأدلة PDF" : "View evidence PDF"} ↗
               </Link>
-              {l.status === "listed" && !l.hidden && !l.deleted_at && (
-                <Link href={`/${locale}/listings/${l.id}`}>
-                  {ar ? "عرض الإعلان" : "View listing"}
-                </Link>
-              )}
+              {l.status === "listed" &&
+                l.review_status === "approved" &&
+                !l.hidden &&
+                !l.deleted_at && (
+                  <Link href={`/${locale}/listings/${l.id}`}>
+                    {ar ? "عرض الإعلان" : "View listing"}
+                  </Link>
+                )}
             </div>
             <details className="benchmark-pdf-preview">
               <summary>{ar ? "معاينة الأدلة هنا" : "Preview evidence here"}</summary>

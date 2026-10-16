@@ -13,6 +13,7 @@ import {
 } from "@/components/product-operations-forms";
 import type { InspectionRequest } from "@/lib/inspections";
 import { SellerListingControls } from "@/components/seller-listing-controls";
+import { ListingReviewState } from "@/components/listing-review";
 export const metadata = { title: "Manage listing", robots: { index: false, follow: false } };
 export default async function EditListing({
   params,
@@ -25,7 +26,7 @@ export default async function EditListing({
   const listing = await getSellerListing(id);
   if (!listing || listing.seller_id !== a.user!.id) notFound();
   const client = await createSupabaseClient();
-  const [b, requests] = await Promise.all([
+  const [b, requests, history] = await Promise.all([
     getBenchmarks(id),
     client!
       .from("inspection_requests")
@@ -33,7 +34,13 @@ export default async function EditListing({
       .eq("listing_id", id)
       .order("created_at", { ascending: false })
       .limit(20),
+    client!
+      .from("listing_review_history")
+      .select("*")
+      .eq("listing_id", id)
+      .order("reviewed_at", { ascending: false }),
   ]);
+  if (history.error) throw new Error("Listing review history could not be loaded.");
   if (requests.error) throw new Error("Inspection requests could not be loaded.");
   const active = requests.data.some((r) => ["requested", "scheduled"].includes(r.status));
   const ar = locale === "ar";
@@ -44,6 +51,7 @@ export default async function EditListing({
       <p>
         <code>{listing.reference_code}</code>
       </p>
+      <ListingReviewState locale={locale} listing={listing} history={history.data || []} />
       <SellerListingControls
         key={`controls-${listing.updated_at}`}
         locale={locale}
@@ -61,13 +69,16 @@ export default async function EditListing({
           {ar ? "الإعلان مخفي بواسطة الإدارة." : "This listing has been hidden by an admin."}
         </p>
       )}
-      {listing.status === "listed" && !listing.hidden && (
-        <p>
-          <Link href={`/${locale}/listings/${id}`}>
-            {ar ? "عرض صفحة الإعلان" : "View listing page"} ↗
-          </Link>
-        </p>
-      )}
+      {listing.status === "listed" &&
+        listing.review_status === "approved" &&
+        !listing.hidden &&
+        !listing.deleted_at && (
+          <p>
+            <Link href={`/${locale}/listings/${id}`}>
+              {ar ? "عرض صفحة الإعلان" : "View listing page"} ↗
+            </Link>
+          </p>
+        )}
       {!listing.deleted_at && (
         <ListingForm
           key={`editor-${listing.updated_at}`}
@@ -88,13 +99,14 @@ export default async function EditListing({
       <section className="evidence-section">
         <div className="eyebrow">{ar ? "الأدلة والاختبارات" : "EVIDENCE & BENCHMARKS"}</div>
         <BenchmarkHistory locale={locale} items={b} revision={listing.revision} />
-        {listing.status === "listed" && !listing.hidden ? (
+        {!listing.deleted_at &&
+        ["listed", "draft", "pending_review", "paused"].includes(listing.status) ? (
           <EvidenceForm locale={locale} lid={id} revision={listing.revision} />
         ) : (
           <p>
             {ar
-              ? "انشر الإعلان أولاً لإرسال ملف الاختبارات."
-              : "Publish the listing before submitting benchmark evidence."}
+              ? "إرسال الاختبارات متاح للإعلانات غير المحذوفة التي ليست مباعة أو مؤرشفة."
+              : "Benchmark submission is available for nondeleted listings that are not sold or archived."}
           </p>
         )}
       </section>

@@ -49,6 +49,16 @@ async function createListing(uid = seller) {
     "select public.save_marketplace_listing($1) id",
     [payload],
   );
+  const stamp = (
+    await db.query<{ stamp: string }>(
+      "select updated_at::text stamp from public.marketplace_listings where id=$1",
+      [result.rows[0].id],
+    )
+  ).rows[0].stamp;
+  await asUser(admin, "select public.review_listing($1,$2,'approved','')", [
+    result.rows[0].id,
+    stamp,
+  ]);
   return { id: result.rows[0].id, payload };
 }
 async function submit(lid: string, uid = seller) {
@@ -676,6 +686,11 @@ describe("product administration and free inspections", () => {
         first.payload,
       ])
     ).rows[0].id;
+    await asUser(
+      admin,
+      "select review_listing($1,(select updated_at from marketplace_listings where id=$1),'approved','')",
+      [second],
+    );
     await purge(first.id);
     expect(
       (
@@ -962,7 +977,16 @@ describe("product administration and free inspections", () => {
         [id],
       )
     ).rows[0];
-    expect(row).toEqual({ reference_code: l.reference_code, benchmark_status: "not_reviewed" });
+    expect(row).toBeUndefined();
+    expect(
+      (
+        await asUser(
+          seller,
+          "select reference_code, review_status from marketplace_listings where id=$1",
+          [id],
+        )
+      ).rows[0],
+    ).toEqual({ reference_code: l.reference_code, review_status: "pending" });
   });
   it("revokes benchmark approval permanently for that submission", async () => {
     const { id } = await createListing();

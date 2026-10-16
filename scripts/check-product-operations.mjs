@@ -1,5 +1,6 @@
 /* global document, window */
 import assert from "node:assert/strict";
+import { approveDisposableListing } from "./approve-disposable-listing.mjs";
 import { expect } from "@playwright/test";
 
 // Called with disposable users and listing from check-marketplace; no real inspection is claimed.
@@ -18,6 +19,7 @@ export async function checkProductOperations({
     assert.equal(r.error, null);
     return r.data;
   };
+  await approveDisposableListing(admin, lid);
   const reference = (await getListing()).reference_code;
   assert.match(reference, /^PCX-\d+$/);
   assert.ok((await buyer.client.rpc("admin_find_products", { term: reference })).error);
@@ -183,24 +185,27 @@ export async function checkProductOperations({
   await operate("restore");
   await admin.page.goto(`${base}/en/admin/products/seller/${lid}`);
   await expect(
-    admin.page.getByRole("button", { name: "Resume & publish listing", exact: true }),
+    admin.page.getByRole("button", { name: "Resume / submit for review", exact: true }),
   ).toBeVisible();
   await admin.page.locator('[name="reason"]').first().fill("TEST ONLY — resume a paused draft.");
-  await admin.page.getByRole("button", { name: "Resume & publish listing", exact: true }).click();
+  await admin.page.getByRole("button", { name: "Resume / submit for review", exact: true }).click();
   await expect
     .poll(async () => {
       const row = await getListing();
-      return row.status === "listed" && !row.hidden;
+      return ["listed", "pending_review"].includes(row.status) && !row.hidden;
     })
     .toBe(true);
   await expect(
-    admin.page.getByRole("button", { name: "Resume & publish listing", exact: true }),
+    admin.page.getByRole("button", { name: "Resume / submit for review", exact: true }),
   ).toHaveCount(0);
+  await approveDisposableListing(admin, lid);
+  await admin.page.reload();
   await expect(admin.page.getByText("State: listed", { exact: true })).toBeVisible();
   await admin.page.locator("summary").filter({ hasText: "Edit product details" }).click();
   await admin.page.locator('[name="status"]').selectOption("listed");
   await admin.page.getByRole("button", { name: "Save listing" }).click();
   await expect(admin.page).toHaveURL(/saved=1/, { timeout: 20000 });
+  await approveDisposableListing(admin, lid);
   await operate("resume");
   assert.equal((await getListing()).reference_code, reference);
   await admin.page.setViewportSize({ width: 390, height: 844 });

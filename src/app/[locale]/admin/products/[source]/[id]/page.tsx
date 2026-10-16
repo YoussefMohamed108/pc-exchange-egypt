@@ -11,6 +11,7 @@ import { ListingForm } from "@/components/listing-form";
 import { ProductControls } from "@/components/product-operations-forms";
 import { InspectionForm } from "@/components/inspection-form";
 import { requestStatus } from "@/lib/inspections";
+import { ListingReviewState, ListingReviewForm } from "@/components/listing-review";
 export default async function ManageProduct({
   params,
 }: {
@@ -97,12 +98,31 @@ export default async function ManageProduct({
               : p.status}
         </p>
       </header>
-      {p.status === "listed" && !p.hidden && !p.admin_paused && !p.deleted_at && (
-        <Link
-          href={source === "seller" ? `/${locale}/listings/${id}` : `/${locale}/products/${p.slug}`}
-        >
-          {ar ? "عرض صفحة المنتج" : "View product page"} ↗
-        </Link>
+      {p.status === "listed" &&
+        (source !== "seller" || p.review_status === "approved") &&
+        !p.hidden &&
+        !p.admin_paused &&
+        !p.deleted_at && (
+          <Link
+            href={
+              source === "seller" ? `/${locale}/listings/${id}` : `/${locale}/products/${p.slug}`
+            }
+          >
+            {ar ? "عرض صفحة المنتج" : "View product page"} ↗
+          </Link>
+        )}
+      {source === "seller" && (
+        <section className="panel" id="listing-review">
+          <ListingReviewState locale={locale} listing={p as SellerListing} />
+          <Link
+            href={`/${locale}/admin/listings?${new URLSearchParams({ q: p.reference_code, status: "all" })}`}
+          >
+            {ar ? "مراجعة نشر الإعلان" : "Listing publication reviews"} ↗
+          </Link>
+          {p.review_status === "pending" && !p.deleted_at && (
+            <ListingReviewForm key={p.updated_at} locale={locale} listing={p as SellerListing} />
+          )}
+        </section>
       )}
       <ProductControls
         key={p.updated_at}
@@ -119,8 +139,8 @@ export default async function ManageProduct({
           <summary>{ar ? "تعديل تفاصيل المنتج" : "Edit product details"}</summary>
           <p>
             {ar
-              ? "تغيير المكونات أو الوصف أو الصور يلغي صلاحية العلامات السابقة."
-              : "Changing hardware details, descriptions or photos invalidates previous watermarks."}
+              ? "تغيير المكونات أو الوصف أو الحالة أو العيوب أو الصور يتطلب مراجعة النشر مجددًا ويلغي العلامات السابقة."
+              : "Changing hardware details, descriptions, condition, defects or photos requires publication review again and invalidates previous watermarks."}
           </p>
           {source === "seller" ? (
             <ListingForm

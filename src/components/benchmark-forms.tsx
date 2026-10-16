@@ -51,8 +51,8 @@ export function EvidenceForm({
         <input type="checkbox" name="share" value="yes" required />
         {text(
           locale,
-          "I understand that signed-in users can view this PDF, including before admin review. It contains no private contact information or unrelated personal data.",
-          "أفهم أن المستخدمين المسجلين يقدروا يشوفوا الملف حتى قبل المراجعة، وأنه لا يحتوي على بيانات تواصل خاصة أو معلومات شخصية غير مطلوبة.",
+          "I understand that signed-in buyers can view this PDF once the listing is approved and public, including before benchmark review. It contains no private contact information or unrelated personal data.",
+          "أفهم أن المشترين المسجلين يمكنهم رؤية الملف بعد الموافقة على نشر الإعلان وإتاحته، حتى قبل مراجعة الاختبارات، وأنه لا يحتوي على بيانات تواصل خاصة أو معلومات شخصية غير مطلوبة.",
         )}
       </label>
       <Button disabled={pending}>
